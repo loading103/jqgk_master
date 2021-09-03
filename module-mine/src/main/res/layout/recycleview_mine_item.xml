@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <import type="com.daqsoft.module_mine.R" />
+
+        <variable
+            name="viewModel"
+            type="com.daqsoft.module_mine.viewmodel.itemviewmodel.MineItemViewModel" />
+
+
+    </data>
+
+
+   <androidx.constraintlayout.widget.ConstraintLayout
+       onClickCommand="@{viewModel.itemOnClick}"
+       android:background="@color/white"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+       <ImageView
+           placeholderRes="@{viewModel.placeholderRes}"
+           url="@{viewModel.menu.icon}"
+           android:id="@+id/icon"
+           android:layout_marginLeft="19dp"
+           app:layout_constraintLeft_toLeftOf="parent"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintTop_toTopOf="parent"
+           android:layout_width="22dp"
+           android:layout_height="22dp">
+       </ImageView>
+
+       <TextView
+           android:gravity="center_vertical"
+           android:id="@+id/title"
+           android:layout_width="0dp"
+           android:layout_height="44dp"
+           android:drawableRight="@mipmap/mine_jiantou"
+           android:includeFontPadding="false"
+           android:paddingLeft="13dp"
+           android:paddingRight="36dp"
+           android:text="@{viewModel.menu.label}"
+           android:textColor="@color/color_333333"
+           android:textSize="15sp"
+           app:layout_constraintLeft_toRightOf="@+id/icon"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintRight_toRightOf="parent"
+           app:layout_constraintTop_toTopOf="parent">
+       </TextView>
+
+   </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

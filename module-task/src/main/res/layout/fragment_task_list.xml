@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.daqsoft.module_task.viewmodel.TaskListViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/color_f2f5fe"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/condition_cl"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:background="@color/white"
+            android:layout_width="0dp"
+            android:layout_height="44dp">
+
+            <View
+                android:visibility="gone"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/midline"
+                android:background="@color/color_e2e2e2"
+                android:layout_width="1dp"
+                android:layout_height="11dp">
+            </View>
+
+            <TextView
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:drawablePadding="8dp"
+                android:drawableRight="@mipmap/qingjia_shaixuan"
+                android:text="筛选"
+                android:textColor="@color/color_666666"
+                android:textSize="15sp"
+                android:id="@+id/filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </TextView>
+
+
+            <TextView
+                android:visibility="gone"
+                app:layout_constraintLeft_toRightOf="@+id/midline"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:drawablePadding="8dp"
+                android:drawableRight="@mipmap/rwdb_jiantou"
+                android:text="一周小结"
+                android:textColor="@color/color_666666"
+                android:textSize="15sp"
+                android:id="@+id/summary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </TextView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:background="@color/color_f2f5fe"
+            android:id="@+id/refresh"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/condition_cl"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:background="@color/color_f2f5fe"
+                tools:itemCount="10"
+                tools:listitem="@layout/recycleview_task_list_item"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                app:itemAnimator="@{null}"
+                app:itemBinding="@{viewModel.itemBinding}"
+                app:items="@{viewModel.pageList}"
+                app:diffConfig = "@{viewModel.diff}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

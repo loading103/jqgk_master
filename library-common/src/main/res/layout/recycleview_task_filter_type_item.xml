@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="MissingDefaultResource,ResourceName">
+
+    <data>
+
+    </data>
+
+
+    <com.ruffian.library.widget.RTextView
+        app:border_width_normal="1dp"
+        app:border_color_normal="@color/color_e2e2e2"
+        app:border_width_selected="0dp"
+        app:border_color_selected="@color/color_e2f4ff"
+        android:paddingHorizontal="12dp"
+        app:corner_radius="4dp"
+        android:id="@+id/content"
+        app:background_selected="@color/color_e2f4ff"
+        app:background_normal="@color/white"
+        app:text_color_selected="@color/color_59abff"
+        app:text_color_normal="@color/color_999999"
+        android:gravity="center"
+        android:text="事件上报"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp">
+    </com.ruffian.library.widget.RTextView>
+
+</layout>

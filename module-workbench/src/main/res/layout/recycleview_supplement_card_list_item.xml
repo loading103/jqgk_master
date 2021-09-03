@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+
+    <data>
+
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        app:cardBackgroundColor="@color/white"
+        app:cardElevation="1dp"
+        app:cardCornerRadius="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:paddingBottom="20dp"
+            android:paddingHorizontal="16dp">
+
+            <com.ruffian.library.widget.RImageView
+                app:is_circle="true"
+                android:src="@mipmap/tongxunlv_touxiang"
+                android:id="@+id/avatar"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+            </com.ruffian.library.widget.RImageView>
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_marginLeft="6dp"
+                android:textSize="14sp"
+                android:textColor="@color/color_333333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@+id/avatar"
+                app:layout_constraintTop_toTopOf="@+id/avatar"
+                app:layout_constraintBottom_toBottomOf="@+id/avatar"
+                android:text="赵小刚">
+            </TextView>
+
+            <com.ruffian.library.widget.RTextView
+                app:corner_radius="2dp"
+                android:id="@+id/tv_state"
+                android:textSize="14sp"
+                app:text_color_normal="@color/color_21b87c"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@+id/avatar"
+                app:layout_constraintBottom_toBottomOf="@+id/avatar"
+                app:layout_constraintRight_toRightOf="parent"
+                app:background_normal="@color/color_edfff8"
+                android:paddingHorizontal="6dp"
+                android:paddingVertical="4dp"
+                android:text="已通过">
+            </com.ruffian.library.widget.RTextView>
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/avatar"
+                android:layout_marginTop="12dp"
+                android:background="@color/color_e1e1e1"/>
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/line"
+                android:layout_marginTop="16dp"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:textSize="15sp"
+                android:text="早上来得太早，忘记打卡了！" />
+            <TextView
+                android:id="@+id/tv_long_time"
+                android:textSize="12sp"
+                android:textColor="@color/color_666666"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_content"
+                android:text="补卡班次：上午班次"/>
+            <TextView
+                android:id="@+id/tv_time"
+                android:textSize="12sp"
+                android:textColor="@color/color_666666"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_content"
+                android:text="提交时间：2019-04-01 17:27"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

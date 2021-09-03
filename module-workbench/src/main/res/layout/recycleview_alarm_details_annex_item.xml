@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+    </data>
+
+
+    <com.ruffian.library.widget.RImageView
+        android:src="@color/color_59abff"
+        app:corner_radius="3dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp">
+    </com.ruffian.library.widget.RImageView>
+
+
+</layout>

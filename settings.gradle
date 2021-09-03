@@ -1,0 +1,13 @@
+include ':module-home'
+include ':module-statistics'
+include ':module-workbench'
+include ':module-task'
+include ':module-mine'
+include ':library-common'
+include ':module-main'
+include ':library-res'
+include ':library-base'
+include ':app'
+include ':mvvmfoundation'
+rootProject.name = "jqgk_master"
+include ':jiguang'

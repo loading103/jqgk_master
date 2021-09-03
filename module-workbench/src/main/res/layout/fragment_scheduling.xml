@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <import type="com.daqsoft.module_work.R" />
+
+        <variable
+            name="viewModel"
+            type="com.daqsoft.module_work.viewmodel.SchedulingViewModel" />
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_f4f7ff">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/outermost"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_f4f7ff">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:background="@color/white"
+                android:id="@+id/staff_cl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    circle="@{Boolean.TRUE}"
+                    url="@{viewModel.rosterGroupObservable.employeeImg}"
+                    placeholderRes="@{R.mipmap.tongxunlv_touxiang}"
+                    android:id="@+id/avatar"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@mipmap/tongxunlv_touxiang"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:textColor="@color/color_333333"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@+id/avatar"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="@{viewModel.rosterGroupObservable.employeeName}"
+                    tools:text="周小明">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/position"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:textColor="@color/color_59abff"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@+id/name"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="@{viewModel.rosterGroupObservable.groupName}"
+                    tools:text="治安维护">
+                </TextView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/container"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/staff_cl"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <View
+                    android:id="@+id/line"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@color/color_e7e7e7"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+                </View>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/calendar_cl"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    app:corner_radius_top_left="10dp"
+                    app:corner_radius_top_right="10dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/line">
+
+                    <TextView
+                        android:id="@+id/date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="28dp"
+                        android:text="2019年08月"
+                        android:textColor="@color/color_333333"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+                    </TextView>
+
+                    <ImageView
+                        android:id="@+id/left"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:padding="5dp"
+                        android:src="@mipmap/kaoqing_rili_jiantou_zuo"
+                        app:layout_constraintBottom_toBottomOf="@+id/date"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/date">
+                    </ImageView>
+
+                    <ImageView
+                        android:id="@+id/right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:padding="5dp"
+                        android:src="@mipmap/kaoqing_rili_jiantou_you"
+                        app:layout_constraintBottom_toBottomOf="@+id/date"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/date">
+                    </ImageView>
+
+                    <com.haibin.calendarview.CalendarLayout
+                        android:id="@+id/calendar_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="10dp"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        app:calendar_show_mode="both_month_week_view"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/date">
+
+                        <com.haibin.calendarview.CalendarView
+                            app:month_view_show_mode="mode_only_current"
+                            android:id="@+id/calendar_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            app:calendar_height="46dp"
+                            app:calendar_padding="10dp"
+                            app:day_text_size="13sp"
+                            app:month_view="com.daqsoft.library_common.widget.CalendarMonthView"
+                            app:select_mode="single_mode"
+                            app:selected_text_color="@color/white"
+                            app:selected_theme_color="@color/color_59abff"
+                            app:week_background="@color/white"
+                            app:week_start_with="sun"
+                            app:week_text_color="@color/color_999999"
+                            app:week_text_size="13sp"
+                            app:week_view="com.daqsoft.library_common.widget.CalendarWeekView">
+                        </com.haibin.calendarview.CalendarView>
+
+                    </com.haibin.calendarview.CalendarLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/roster_cl"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@color/white"
+                    android:padding="20dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/calendar_cl">
+
+                    <TextView
+                        android:id="@+id/select_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:includeFontPadding="false"
+                        tools:text="日期    2019年9月19日    星期四"
+                        android:textColor="@color/color_333333"
+                        android:textSize="15sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/job_rule"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:includeFontPadding="false"
+                        android:text="轮班规则：上五休二    班次：无"
+                        android:textColor="@color/color_999999"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/select_date">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/attendance_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="考勤时间"
+                        android:textColor="@color/color_333333"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/job_rule">
+                    </TextView>
+
+                    <com.ruffian.library.widget.RConstraintLayout
+                        android:id="@+id/start_work_cl"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:padding="16dp"
+                        app:background_normal="@color/color_f4f7ff"
+                        app:corner_radius="5dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/attendance_time">
+
+                        <TextView
+                            android:id="@+id/start_work_txt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:includeFontPadding="false"
+                            android:text="上班"
+                            android:textColor="@color/color_59abff"
+                            android:textSize="15sp"
+                            android:textStyle="bold">
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/start_work"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:includeFontPadding="false"
+                            android:text="当日无排班"
+                            android:textColor="@color/color_666666"
+                            android:textSize="14sp"
+                            app:layout_constraintTop_toBottomOf="@+id/start_work_txt">
+                        </TextView>
+
+                    </com.ruffian.library.widget.RConstraintLayout>
+
+
+                    <com.ruffian.library.widget.RConstraintLayout
+                        android:id="@+id/off_work_cl"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:padding="16dp"
+                        app:background_normal="@color/color_f4f7ff"
+                        app:corner_radius="5dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/start_work_cl">
+
+                        <TextView
+                            android:id="@+id/off_work_txt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:includeFontPadding="false"
+                            android:text="下班"
+                            android:textColor="@color/color_59abff"
+                            android:textSize="15sp"
+                            android:textStyle="bold">
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/off_work"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:includeFontPadding="false"
+                            android:text="当日无排班"
+                            android:textColor="@color/color_666666"
+                            android:textSize="14sp"
+                            app:layout_constraintTop_toBottomOf="@+id/off_work_txt">
+                        </TextView>
+
+                    </com.ruffian.library.widget.RConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

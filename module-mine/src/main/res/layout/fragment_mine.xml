@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <import type="com.daqsoft.module_mine.R" />
+
+        <variable
+            name="viewModel"
+            type="com.daqsoft.module_mine.viewmodel.MineViewModel" />
+    </data>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:background="@color/color_f4f7ff"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/mine_bg"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <include
+                android:id="@+id/include"
+                layout="@layout/layout_toolbar"
+                app:toolbarViewModel="@{viewModel.toolbarViewModel}" />
+
+
+            <ImageView
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/recycler_view"
+                android:src="@mipmap/mine_bg_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+            </ImageView>
+
+            <androidx.cardview.widget.CardView
+                android:elevation="1dp"
+                android:id="@+id/mine_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="10dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="0dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/include">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingHorizontal="24dp"
+                    android:paddingTop="24dp">
+
+                    <TextView
+                        android:id="@+id/name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:includeFontPadding="false"
+                        tools:text="张晓宇"
+                        android:text="@{viewModel.profile.employee.name}"
+                        android:textColor="@color/color_333333"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/department"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="11dp"
+                        android:includeFontPadding="false"
+                        tools:text="工程部 项目经理"
+                        android:text="@{viewModel.postObservable}"
+                        android:textColor="@color/color_666666"
+                        android:textSize="13sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/name" />
+
+                    <TextView
+                        android:id="@+id/phone_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:includeFontPadding="false"
+                        tools:text="180 0332 11121"
+                        android:text="@{viewModel.mobile}"
+                        android:textColor="@color/color_59abff"
+                        android:textSize="13sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/department" />
+
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:paddingTop="19dp"
+                        app:layout_constraintTop_toBottomOf="@+id/phone_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <View
+                            android:id="@+id/line"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/color_e2e2e2"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent">
+                        </View>
+
+                        <TextView
+                            android:id="@+id/details"
+                            app:onClickCommand="@{viewModel.personalInfoOnClick}"
+                            android:paddingVertical="16dp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:drawableRight="@mipmap/mine_jiantou"
+                            android:includeFontPadding="false"
+                            android:text="查看详情"
+                            android:textColor="@color/color_999999"
+                            android:textSize="12sp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/line" >
+                        </TextView>
+
+                        <androidx.constraintlayout.widget.Group
+                            android:visibility="@{viewModel.personalCenter}"
+                            app:constraint_referenced_ids="line,details"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                        </androidx.constraintlayout.widget.Group>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                    <ImageView
+                        circle="@{Boolean.TRUE}"
+                        placeholderRes="@{R.mipmap.mine_touxiang}"
+                        url="@{viewModel.profile.employee.img}"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@mipmap/mine_touxiang"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                tools:itemCount="5"
+                tools:listitem="@layout/recycleview_mine_item"
+                android:layout_marginTop="16dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mine_header"
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                app:itemAnimator="@{null}"
+                app:itemBinding="@{viewModel.itemBinding}"
+                app:items="@{viewModel.observableList}">
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

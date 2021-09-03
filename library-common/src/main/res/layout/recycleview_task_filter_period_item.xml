@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="MissingDefaultResource,ResourceName">
+
+    <data>
+
+    </data>
+
+
+    <com.ruffian.library.widget.RTextView
+        app:corner_radius="34dp"
+        android:id="@+id/content"
+        app:background_selected="@color/color_e2f4ff"
+        app:background_normal="@color/color_f4f7ff"
+        app:text_color_selected="@color/color_59abff"
+        app:text_color_normal="@color/color_333333"
+        android:gravity="center"
+        android:text="今日"
+        android:layout_width="match_parent"
+        android:layout_height="34dp">
+    </com.ruffian.library.widget.RTextView>
+
+</layout>

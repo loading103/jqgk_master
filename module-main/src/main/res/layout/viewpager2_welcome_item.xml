@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:scaleType="centerCrop"
+            android:id="@+id/image"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp">
+        </ImageView>
+
+        <com.ruffian.library.widget.RTextView
+            android:textSize="16sp"
+            android:textColor="@color/color_329aff"
+            android:text="立即进入"
+            app:corner_radius="50dp"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            app:background_normal="@color/white"
+            app:border_color_normal="@color/color_329aff"
+            app:border_width_normal="1dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="60dp"
+            android:id="@+id/join"
+            android:layout_width="175dp"
+            android:layout_height="44dp">
+        </com.ruffian.library.widget.RTextView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

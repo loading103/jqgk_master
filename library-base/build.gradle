@@ -1,0 +1,202 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+
+android {
+
+    // 开发接口地址
+    def BETA_BASE_API_URL = "\"http://samc.test.daqsoft.com/mobile_dev/api/\""
+    // 测试接口地址
+    def DEBUG_BASE_API_URL = "\"http://samc.test.daqsoft.com/mobile_test/api/\""
+    // 预生产接口地址
+    def PREPROD_BASE_API_URL = "\"http://samc.test.daqsoft.com/mobil_teste/api/\""
+    // 生产接口地址
+    def RELEASE_BASE_API_URL = "\"http://samc.daqsoft.com/api/mobile/api/\""
+
+
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            buildConfigField("String", "BASE_API_URL", "${DEBUG_BASE_API_URL}")
+
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "BASE_API_URL", "${RELEASE_BASE_API_URL}")
+
+        }
+
+        beta.initWith(debug)
+        beta {
+            matchingFallbacks = ['beta', 'debug', 'release']
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "BASE_API_URL", "${BETA_BASE_API_URL}")
+
+
+        }
+
+        preprod.initWith(debug)
+        preprod {
+            matchingFallbacks = ['preprod', 'debug', 'release']
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "BASE_API_URL", "${PREPROD_BASE_API_URL}")
+
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+    buildFeatures {
+        dataBinding true
+    }
+
+    lintOptions {
+        ignoreWarnings true
+        checkReleaseBuilds false
+        abortOnError false
+    }
+}
+
+kapt {
+    generateStubs = true
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.2.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    // 基础框架
+    api project(':mvvmfoundation')
+
+    // 极光
+    api project(':jiguang')
+    // oppo 厂商 aar 需要单独引入
+    implementation(name: 'com.heytap.msp-push-2.1.0', ext: 'aar')
+    //oppo_dependencies_end
+
+    // 资源
+    api project(':library-res')
+
+    // hilt
+    implementation rootProject.ext.dependencies["hilt-android"]
+    kapt rootProject.ext.dependencies["hilt-android-compiler"]
+    implementation rootProject.ext.dependencies["hilt-lifecycle-viewmodel"]
+    kapt rootProject.ext.dependencies["hilt-compiler"]
+
+    // permissionx
+    api(rootProject.ext.dependencies.permissionx)
+
+    //阿里路由框架
+    api rootProject.ext.dependencies["arouter-api"]
+
+    // immersionbar
+    api rootProject.ext.dependencies.immersionbar
+
+    // RWidgetHelper
+    api rootProject.ext.dependencies.RWidgetHelper
+
+    // paging3
+    api rootProject.ext.dependencies["paging"]
+
+    //  bindingcollectionadapter-paging
+    api rootProject.ext.dependencies["bindingcollectionadapter"]
+    api rootProject.ext.dependencies["bindingcollectionadapter-recyclerview"]
+    api rootProject.ext.dependencies["bindingcollectionadapter-viewpager2"]
+    api rootProject.ext.dependencies["bindingcollectionadapter-paging"]
+
+    // bottom-tab
+    api rootProject.ext.dependencies["bottom-tab"]
+
+    // simplifyspan
+    api rootProject.ext.dependencies.simplifyspan
+
+    // smart-refresh-layout
+    api rootProject.ext.dependencies["smart-refresh-layout-kernel"]
+    api rootProject.ext.dependencies["refresh-header-material"]
+
+    // MagicIndicator
+    api rootProject.ext.dependencies.magicindicator
+
+    // navigation
+    api rootProject.ext.dependencies["navigation-fragment"]
+    api rootProject.ext.dependencies["navigation-ui"]
+
+    // XPopup
+    api rootProject.ext.dependencies.XPopup
+
+    // agentweb
+    api rootProject.ext.dependencies["agentweb"]
+    api rootProject.ext.dependencies["agentweb-filechooser"]
+
+    // mmkv
+    api rootProject.ext.dependencies["mmkv"]
+
+    // PictureSelector
+    api rootProject.ext.dependencies["PictureSelector"]
+    // PictureSelector
+    api rootProject.ext.dependencies["Android-PickerView"]
+
+    // calendarview
+    api rootProject.ext.dependencies["calendarview"]
+
+    // flexbox
+    api rootProject.ext.dependencies["flexbox"]
+
+
+    // AndroidUtils
+    api rootProject.ext.dependencies["AndroidUtils"]
+
+    // okdownload
+    api rootProject.ext.dependencies["okdownload"]
+    api rootProject.ext.dependencies["okdownload-sqlite"]
+    api rootProject.ext.dependencies["okdownload-okhttp"]
+    api rootProject.ext.dependencies["okdownload-ktx"]
+
+    // MPAndroidChart
+    api rootProject.ext.dependencies["MPAndroidChart"]
+
+    // switchbutton
+    api rootProject.ext.dependencies["switchbutton"]
+
+    // gsyVideoPlayer
+    api rootProject.ext.dependencies["gsyVideoPlayer"]
+    // banner
+    api rootProject.ext.dependencies["banner"]
+
+
+}

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.daqsoft.module_work.viewmodel.itemviewmodel.LeaveItemViewModel" />
+
+        <import type="android.view.View"/>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        onClickCommand="@{viewModel.onItemClick}"
+        android:paddingBottom="20dp"
+        android:paddingHorizontal="16dp"
+        android:background="@drawable/shape_bg_white_r5">
+
+        <ImageView
+            app:url="@{viewModel.data.url}"
+            app:circle="@{Boolean.TRUE}"
+            android:src="@mipmap/txl_details_tx_default_1"
+            android:id="@+id/avatar"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        </ImageView>
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_marginLeft="6dp"
+            android:textSize="14sp"
+            android:textColor="@color/color_333333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@+id/avatar"
+            app:layout_constraintTop_toTopOf="@+id/avatar"
+            app:layout_constraintBottom_toBottomOf="@+id/avatar"
+            android:text="@{viewModel.data.name}"
+            tools:text="赵小刚">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_state_1"
+            android:textSize="14sp"
+            android:textColor="@color/color_21b87c"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/avatar"
+            app:layout_constraintBottom_toBottomOf="@+id/avatar"
+            app:layout_constraintRight_toRightOf="parent"
+            android:background="@color/color_edfff8"
+            android:paddingHorizontal="6dp"
+            android:visibility='@{viewModel.data.state.equals("1")?View.VISIBLE:View.GONE}'
+            android:paddingVertical="4dp"
+            android:text="已通过">
+        </TextView>
+        <TextView
+            android:id="@+id/tv_state_2"
+            android:textSize="14sp"
+            android:textColor="@color/color_59abff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/avatar"
+            app:layout_constraintBottom_toBottomOf="@+id/avatar"
+            app:layout_constraintRight_toRightOf="parent"
+            android:visibility='@{viewModel.data.state.equals("2")?View.VISIBLE:View.GONE}'
+            android:background="@color/color_eff7ff"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="4dp"
+            android:text="待审批">
+        </TextView>
+        <TextView
+            android:id="@+id/tv_state_3"
+            android:textSize="14sp"
+            android:textColor="@color/color_ff5757"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/avatar"
+            app:layout_constraintBottom_toBottomOf="@+id/avatar"
+            app:layout_constraintRight_toRightOf="parent"
+            android:background="@color/color_fff2f2"
+            android:visibility='@{viewModel.data.state.equals("3")?View.VISIBLE:View.GONE}'
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="4dp"
+            android:text="被驳回">
+        </TextView>
+        <TextView
+            android:id="@+id/tv_state_4"
+            android:textSize="14sp"
+            android:textColor="@color/color_ff5757"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/avatar"
+            app:layout_constraintBottom_toBottomOf="@+id/avatar"
+            app:layout_constraintRight_toRightOf="parent"
+            android:background="@color/color_fff2f2"
+            android:paddingHorizontal="6dp"
+            android:visibility='@{viewModel.data.state.equals("4")?View.VISIBLE:View.GONE}'
+            android:paddingVertical="4dp"
+            android:text="已撤销">
+        </TextView>
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/avatar"
+            android:layout_marginTop="12dp"
+            android:background="@color/color_e1e1e1"/>
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line"
+            android:layout_marginTop="16dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:textSize="15sp"
+            android:text="@{viewModel.data.content}"
+            tools:text="因为自己的原因，需请假一天假，望领导，需请假一天假，望领导，需请假一天假，望领导，需请假一天假，望领导，需请假一天假，望领导批准！" />
+        <TextView
+            android:id="@+id/tv_long_time"
+            android:textSize="12sp"
+            android:textColor="@color/color_666666"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_content"
+            android:text="@{viewModel.data.getLongTime()}"
+            tools:text="请假时长：2天"/>
+        <TextView
+            android:id="@+id/tv_time"
+            android:textSize="12sp"
+            android:textColor="@color/color_666666"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.data.getCreatTime()}"
+            android:layout_marginTop="12dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_content"
+            tools:text="提交时间：2019-04-01 17:27"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

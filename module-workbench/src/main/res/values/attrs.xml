@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SideBar">
+        <attr name="sidebar_text_size" format="dimension"/>
+        <attr name="sidebar_normal_text_color" format="color"/>
+        <attr name="sidebar_selected_text_color" format="color"/>
+        <attr name="sidebar_max_offset" format="dimension"/>
+        <attr name="sidebar_position" format="enum">
+            <enum name="right" value="0"/>
+            <enum name="left" value="1"/>
+        </attr>
+        <attr name="sidebar_text_alignment" format="enum">
+            <enum name="center" value="0"/>
+            <enum name="left" value="1"/>
+            <enum name="right" value="2" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="LineWaveVoiceView">
+        <attr name="voiceLineColor" format="color"/>
+        <attr name="voiceLineWidth" format="dimension"/>
+        <attr name="voiceTextColor" format="color" />
+        <attr name="voiceTextSize" format="dimension" />
+        <attr name="voiceLineSpace" format="dimension" />
+    </declare-styleable>
+</resources>

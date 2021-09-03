@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <import type="com.daqsoft.module_task.R" />
+
+        <variable
+            name="viewModel"
+            type="com.daqsoft.module_task.viewmodel.WeeklySummaryViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/color_f4f7ff"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/arrow"
+            android:rotation="90"
+            android:padding="5dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="56dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@mipmap/rwdb_jiantou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </ImageView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_marginVertical="133dp"
+            android:layout_marginHorizontal="38dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:cardElevation="5dp"
+            app:cardCornerRadius="5dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:src="@mipmap/xiaojie_bg_youshang"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </ImageView>
+
+                <ImageView
+                    android:src="@mipmap/xiaojie_bg_zuoxia"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </ImageView>
+
+                <ImageView
+                    android:src="@mipmap/xiaojie_bg_youxia"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </ImageView>
+
+                <com.ruffian.library.widget.RImageView
+                    url="@{viewModel.avatar}"
+                    placeholderRes="@{R.mipmap.tongxunlv_touxiang}"
+                    app:is_circle="true"
+                    android:src="@mipmap/tongxunlv_touxiang"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="36dp"
+                    android:layout_marginLeft="26dp"
+                    android:id="@+id/avatar"
+                    android:layout_width="33dp"
+                    android:layout_height="33dp">
+                </com.ruffian.library.widget.RImageView>
+
+                <TextView
+                    android:id="@+id/week"
+                    android:text="一周小结4.19~4.23"
+                    android:textStyle="bold"
+                    android:textColor="@color/color_666666"
+                    android:textSize="14sp"
+                    android:layout_marginLeft="13dp"
+                    app:layout_constraintLeft_toRightOf="@+id/avatar"
+                    app:layout_constraintBottom_toBottomOf="@+id/avatar"
+                    app:layout_constraintTop_toTopOf="@+id/avatar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </TextView>
+
+                <ImageView
+                    android:id="@+id/dot"
+                    android:layout_marginTop="24dp"
+                    app:layout_constraintRight_toRightOf="@+id/avatar"
+                    app:layout_constraintLeft_toLeftOf="@+id/avatar"
+                    app:layout_constraintTop_toBottomOf="@+id/avatar"
+                    android:src="@mipmap/xiaoxie_dian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </ImageView>
+
+                <TextView
+                    android:lineSpacingMultiplier="1.5"
+                    android:text="感谢您的付出与努力，相信你的梦想最终都会实现"
+                    android:textSize="15sp"
+                    android:textColor="@color/color_59abff"
+                    android:layout_marginRight="36dp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintLeft_toLeftOf="@+id/week"
+                    app:layout_constraintTop_toTopOf="@+id/dot"
+                    android:id="@+id/tips"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                </TextView>
+
+                <TextView
+                    app:layout_constraintVertical_chainStyle="spread_inside"
+                    android:lineSpacingExtra="5dp"
+                    android:text="本周接收任务\n20件"
+                    android:layout_marginTop="24dp"
+                    app:layout_constraintRight_toRightOf="@+id/tips"
+                    app:layout_constraintLeft_toLeftOf="@+id/tips"
+                    app:layout_constraintTop_toBottomOf="@+id/tips"
+                    app:layout_constraintBottom_toTopOf="@+id/complete"
+                    android:id="@+id/receive"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                </TextView>
+
+                <TextView
+                    android:lineSpacingExtra="5dp"
+                    android:text="本周已办任务\n420件"
+                    app:layout_constraintRight_toRightOf="@+id/tips"
+                    app:layout_constraintLeft_toLeftOf="@+id/tips"
+                    app:layout_constraintTop_toBottomOf="@+id/receive"
+                    app:layout_constraintBottom_toTopOf="@+id/undone"
+                    android:id="@+id/complete"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                </TextView>
+
+                <TextView
+                    android:lineSpacingExtra="5dp"
+                    android:text="本周待办任务\n850件"
+                    app:layout_constraintRight_toRightOf="@+id/tips"
+                    app:layout_constraintLeft_toLeftOf="@+id/tips"
+                    app:layout_constraintTop_toBottomOf="@+id/complete"
+                    app:layout_constraintBottom_toTopOf="@+id/read"
+                    android:id="@+id/undone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                </TextView>
+
+                <TextView
+                    android:lineSpacingExtra="5dp"
+                    android:text="本周已阅事项\n46件"
+                    android:layout_marginBottom="36dp"
+                    app:layout_constraintRight_toRightOf="@+id/tips"
+                    app:layout_constraintLeft_toLeftOf="@+id/tips"
+                    app:layout_constraintTop_toBottomOf="@+id/undone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:id="@+id/read"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                </TextView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</layout>

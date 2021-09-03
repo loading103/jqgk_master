@@ -1,0 +1,13 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.daqsoft.library_common">
+
+    <application>
+
+        <!-- 定位需要的服务 适配Android Q需要加上android:foregroundServiceType="location"-->
+        <service
+            android:name="com.amap.api.location.APSService"
+            android:foregroundServiceType="location" />
+
+
+    </application>
+</manifest>

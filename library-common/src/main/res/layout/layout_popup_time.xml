@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="ResourceName">
+
+    <data>
+
+    </data>
+
+
+    <com.ruffian.library.widget.RConstraintLayout
+        app:corner_radius_top_left="10dp"
+        app:corner_radius_top_right="10dp"
+        app:background_normal="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="取消"
+            android:textColor="@color/color_999999"
+            android:textSize="15sp"
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </TextView>
+
+        <TextView
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="确定"
+            android:textColor="@color/color_59abff"
+            android:textSize="15sp"
+            android:id="@+id/determine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </TextView>
+
+        <!--此部分需要完整复制过去，删减或者更改ID会导致初始化找不到内容而报空-->
+        <LinearLayout
+            android:layout_marginVertical="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/determine"
+            android:id="@+id/optionspicker"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="150dp"
+            android:gravity="center"
+            android:background="@android:color/white"
+            android:orientation="horizontal">
+
+            <com.contrarywind.view.WheelView
+                android:id="@+id/year"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <com.contrarywind.view.WheelView
+
+                android:id="@+id/month"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.1" />
+
+            <com.contrarywind.view.WheelView
+                android:id="@+id/day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.1" />
+
+            <com.contrarywind.view.WheelView
+                android:id="@+id/hour"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.1" />
+
+            <com.contrarywind.view.WheelView
+                android:id="@+id/min"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.1" />
+
+            <com.contrarywind.view.WheelView
+                android:id="@+id/second"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.1" />
+        </LinearLayout>
+
+    </com.ruffian.library.widget.RConstraintLayout>
+
+
+</layout>

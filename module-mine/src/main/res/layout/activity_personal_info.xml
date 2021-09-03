@@ -1,0 +1,766 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.daqsoft.module_mine.R" />
+
+        <variable
+            name="viewModel"
+            type="com.daqsoft.module_mine.viewmodel.PersonalInfoViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="236dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/mine_bg"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/layout_toolbar"
+            app:toolbarViewModel="@{viewModel.toolbarViewModel}" />
+
+        <ImageView
+            android:layout_marginTop="12dp"
+            circle="@{Boolean.TRUE}"
+            placeholderRes="@{R.mipmap.mine_touxiang}"
+            url="@{viewModel.employee.img}"
+            android:id="@+id/avatar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="21dp"
+            android:src="@mipmap/mine_touxiang"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="3dp"
+            android:includeFontPadding="false"
+            android:text="@{viewModel.employee.name}"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@+id/avatar"
+            app:layout_constraintTop_toTopOf="@+id/avatar" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="13dp"
+            android:layout_marginBottom="3dp"
+            android:includeFontPadding="false"
+            android:text="@{viewModel.postObservable}"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/avatar"
+            app:layout_constraintLeft_toRightOf="@+id/avatar" />
+
+
+        <com.ruffian.library.widget.RConstraintLayout
+            android:layout_marginTop="20dp"
+            app:background_normal="@color/white"
+            app:corner_radius_top_left="10dp"
+            app:corner_radius_top_right="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/avatar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/basic_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="19dp"
+                        android:layout_marginTop="28dp"
+                        android:text="@string/module_mine_basic_info"
+                        android:textColor="@color/color_333333"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                    <!--性别-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/gender_cl"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/basic_info">
+
+                        <ImageView
+                            android:id="@+id/gender_iv"
+                            android:layout_width="25dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:scaleType="center"
+                            android:src="@mipmap/mine_xingbie"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/gender"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="20dp"
+                            android:layout_marginLeft="12dp"
+                            android:text="@string/module_mine_gender"
+                            android:textColor="@color/color_333333"
+                            android:textSize="15sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toRightOf="@+id/gender_iv"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:text="@{viewModel.employee.coverGender()}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
+                            android:textColor="@color/color_666666"
+                            android:textSize="15sp"
+                            app:layout_constraintBaseline_toBaselineOf="@+id/gender"
+                            app:layout_constraintRight_toRightOf="parent" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:background="@color/color_e8e8e8"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <!--生日-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/birthday_cl"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/gender_cl">
+
+                        <ImageView
+                            android:id="@+id/birthday_iv"
+                            android:layout_width="25dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:scaleType="center"
+                            android:src="@mipmap/mine_shengri"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/birthday"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="20dp"
+                            android:layout_marginLeft="12dp"
+                            android:text="@string/module_mine_birthday"
+                            android:textColor="@color/color_333333"
+                            android:textSize="15sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toRightOf="@+id/birthday_iv"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:text="@{viewModel.employee.birthday}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
+                            android:textColor="@color/color_666666"
+                            android:textSize="15sp"
+                            app:layout_constraintBaseline_toBaselineOf="@+id/birthday"
+                            app:layout_constraintRight_toRightOf="parent" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:background="@color/color_e8e8e8"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <!--邮箱-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/email_cl"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/birthday_cl">
+
+                        <ImageView
+                            android:id="@+id/email_iv"
+                            android:layout_width="25dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:scaleType="center"
+                            android:src="@mipmap/mine_youxiang"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/email"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="20dp"
+                            android:layout_marginLeft="12dp"
+                            android:text="@string/module_mine_mailbox"
+                            android:textColor="@color/color_333333"
+                            android:textSize="15sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toRightOf="@+id/email_iv"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:text="@{viewModel.employee.email}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
+                            android:textColor="@color/color_666666"
+                            android:textSize="15sp"
+                            app:layout_constraintBaseline_toBaselineOf="@+id/email"
+                            app:layout_constraintRight_toRightOf="parent" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:background="@color/color_e8e8e8"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <!--手机-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/phone_number_cl"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/email_cl">
+
+                        <ImageView
+                            android:id="@+id/phone_number_iv"
+                            android:layout_width="25dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:scaleType="center"
+                            android:src="@mipmap/mine_shouji"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/phone_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="20dp"
+                            android:layout_marginLeft="12dp"
+                            android:text="@string/module_mine_phone_number"
+                            android:textColor="@color/color_333333"
+                            android:textSize="15sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toRightOf="@+id/phone_number_iv"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:drawablePadding="8dp"
+                            android:drawableLeft="@mipmap/gerenzhuye_dadianhua"
+                            android:id="@+id/mobile"
+                            android:text="@{viewModel.employee.mobile}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
+                            android:textColor="@color/color_59abff"
+                            android:textSize="15sp"
+                            app:layout_constraintBaseline_toBaselineOf="@+id/phone_number"
+                            app:layout_constraintRight_toRightOf="parent" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:background="@color/color_e8e8e8"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <!--微信-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/wechat_cl"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/phone_number_cl">
+
+                        <ImageView
+                            android:id="@+id/wechat_iv"
+                            android:layout_width="25dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:scaleType="center"
+                            android:src="@mipmap/mine_weixin"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/wechat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="20dp"
+                            android:layout_marginLeft="12dp"
+                            android:text="@string/module_mine_wechat"
+                            android:textColor="@color/color_333333"
+                            android:textSize="15sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toRightOf="@+id/wechat_iv"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:text="@{viewModel.employee.wechat}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
+                            android:textColor="@color/color_666666"
+                            android:textSize="15sp"
+                            app:layout_constraintBaseline_toBaselineOf="@+id/wechat"
+                            app:layout_constraintRight_toRightOf="parent" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:background="@color/color_e8e8e8"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <!--座机-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/landline_cl"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/wechat_cl">
+
+                        <ImageView
+                            android:id="@+id/landline_iv"
+                            android:layout_width="25dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:scaleType="center"
+                            android:src="@mipmap/mine_zuoji"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/landline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="20dp"
+                            android:layout_marginLeft="12dp"
+                            android:text="@string/module_mine_landline"
+                            android:textColor="@color/color_333333"
+                            android:textSize="15sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toRightOf="@+id/landline_iv"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:text='@{viewModel.employee.coverLandline()}'
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
+                            android:textColor="@color/color_666666"
+                            android:textSize="15sp"
+                            app:layout_constraintBaseline_toBaselineOf="@+id/landline"
+                            app:layout_constraintRight_toRightOf="parent" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="8dp"
+                            android:background="@color/color_e8e8e8"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/more_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="19dp"
+                        android:layout_marginTop="28dp"
+                        android:text="@string/module_mine_basic_info"
+                        android:textColor="@color/color_333333"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/landline_cl" />
+                    <!--工号-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/job_number_cl"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/more_info">
+
+                        <ImageView
+                            android:id="@+id/job_number_iv"
+                            android:layout_width="25dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:scaleType="center"
+                            android:src="@mipmap/mine_gonghoa"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/job_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="20dp"
+                            android:layout_marginLeft="12dp"
+                            android:text="@string/module_mine_job_number"
+                            android:textColor="@color/color_333333"
+                            android:textSize="15sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toRightOf="@+id/job_number_iv"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:text="@{viewModel.employee.jobNo}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
+                            android:textColor="@color/color_666666"
+                            android:textSize="15sp"
+                            app:layout_constraintBaseline_toBaselineOf="@+id/job_number"
+                            app:layout_constraintRight_toRightOf="parent" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:background="@color/color_e8e8e8"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <!--籍贯-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/hometown_cl"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/job_number_cl">
+
+                        <ImageView
+                            android:id="@+id/hometown_iv"
+                            android:layout_width="25dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:scaleType="center"
+                            android:src="@mipmap/mine_jiguan"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/hometown"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="20dp"
+                            android:layout_marginLeft="12dp"
+                            android:text="@string/module_mine_hometown"
+                            android:textColor="@color/color_333333"
+                            android:textSize="15sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toRightOf="@+id/hometown_iv"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:text="@{viewModel.employee.nativePlace}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
+                            android:textColor="@color/color_666666"
+                            android:textSize="15sp"
+                            app:layout_constraintBaseline_toBaselineOf="@+id/hometown"
+                            app:layout_constraintRight_toRightOf="parent" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:background="@color/color_e8e8e8"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <!--毕业院校-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/graduated_school_cl"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/hometown_cl">
+
+                        <ImageView
+                            android:id="@+id/graduated_school_iv"
+                            android:layout_width="25dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:scaleType="center"
+                            android:src="@mipmap/mine_biyeyuanxiao"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/graduated_school"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="20dp"
+                            android:layout_marginLeft="12dp"
+                            android:text="@string/module_mine_graduated_school"
+                            android:textColor="@color/color_333333"
+                            android:textSize="15sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toRightOf="@+id/graduated_school_iv"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:text="@{viewModel.employee.graduatedSchool}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
+                            android:textColor="@color/color_666666"
+                            android:textSize="15sp"
+                            app:layout_constraintBaseline_toBaselineOf="@+id/graduated_school"
+                            app:layout_constraintRight_toRightOf="parent" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:background="@color/color_e8e8e8"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <!--毕业时间-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/graduation_time_cl"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/graduated_school_cl">
+
+                        <ImageView
+                            android:id="@+id/graduation_time_iv"
+                            android:layout_width="25dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:scaleType="center"
+                            android:src="@mipmap/mine_biyeshijian"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/graduation_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="20dp"
+                            android:layout_marginLeft="12dp"
+                            android:text="@string/module_mine_graduation_time"
+                            android:textColor="@color/color_333333"
+                            android:textSize="15sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toRightOf="@+id/graduation_time_iv"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:text="@{viewModel.employee.graduatedDate}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
+                            android:textColor="@color/color_666666"
+                            android:textSize="15sp"
+                            app:layout_constraintBaseline_toBaselineOf="@+id/graduation_time"
+                            app:layout_constraintRight_toRightOf="parent" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:background="@color/color_e8e8e8"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <!--学历-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/education_cl"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/graduation_time_cl">
+
+                        <ImageView
+                            android:id="@+id/education_iv"
+                            android:layout_width="25dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:scaleType="center"
+                            android:src="@mipmap/mine_xueli"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/education"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="20dp"
+                            android:layout_marginLeft="12dp"
+                            android:text="@string/module_mine_education"
+                            android:textColor="@color/color_333333"
+                            android:textSize="15sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toRightOf="@+id/education_iv"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:text="@{viewModel.employee.coverEducation()}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
+                            android:textColor="@color/color_666666"
+                            android:textSize="15sp"
+                            app:layout_constraintBaseline_toBaselineOf="@+id/education"
+                            app:layout_constraintRight_toRightOf="parent" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:background="@color/color_e8e8e8"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <!--所学专业-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/major_cl"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/education_cl">
+
+                        <ImageView
+                            android:id="@+id/major_iv"
+                            android:layout_width="25dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:scaleType="center"
+                            android:src="@mipmap/mine_jiguan"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/major"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="20dp"
+                            android:layout_marginLeft="12dp"
+                            android:text="@string/module_mine_major"
+                            android:textColor="@color/color_333333"
+                            android:textSize="15sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toRightOf="@+id/major_iv"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:text="@{viewModel.employee.major}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
+                            android:textColor="@color/color_666666"
+                            android:textSize="15sp"
+                            app:layout_constraintBaseline_toBaselineOf="@+id/major"
+                            app:layout_constraintRight_toRightOf="parent" />
+
+                        <!--  <View
+                              android:layout_width="0dp"
+                              android:layout_height="1dp"
+                              android:layout_marginHorizontal="20dp"
+                              android:background="@color/color_e8e8e8"
+                              app:layout_constraintBottom_toBottomOf="parent"
+                              app:layout_constraintLeft_toLeftOf="parent"
+                              app:layout_constraintRight_toRightOf="parent" />-->
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--                    <View-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="90dp"-->
+<!--                        android:background="@color/color_f4f7ff"-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--                        app:layout_constraintRight_toRightOf="parent"-->
+<!--                        app:layout_constraintTop_toBottomOf="@+id/major_cl" />-->
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.core.widget.NestedScrollView>
+
+        </com.ruffian.library.widget.RConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

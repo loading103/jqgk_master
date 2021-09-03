@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="ResourceName">
+
+    <data>
+
+    </data>
+
+
+    <com.ruffian.library.widget.RConstraintLayout
+        app:corner_radius_top_left="10dp"
+        app:corner_radius_top_right="10dp"
+        app:background_normal="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="事件处理"
+            android:id="@+id/title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="28dp"
+            android:textColor="@color/color_333333"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </TextView>
+
+        <ImageView
+            android:layout_marginRight="20dp"
+            android:id="@+id/close"
+            app:layout_constraintBottom_toBottomOf="@+id/title"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/title"
+            android:src="@mipmap/qingjia_guanbing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </ImageView>
+
+        <TextView
+            android:id="@+id/assign_txt"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="22dp"
+            app:layout_constraintLeft_toLeftOf="@+id/title"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            android:textColor="@color/color_333333"
+            android:textSize="14sp"
+            android:text="指派给"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </TextView>
+
+        <com.ruffian.library.widget.RTextView
+            android:hint="请选择"
+            android:id="@+id/assign"
+            android:layout_marginLeft="20dp"
+            android:textColorHint="@color/color_999999"
+            android:textColor="@color/color_333333"
+            app:corner_radius="4dp"
+            app:border_width_normal="1dp"
+            app:border_color_normal="@color/color_e2e2e2"
+            android:includeFontPadding="false"
+            android:paddingHorizontal="13dp"
+            android:paddingVertical="11dp"
+            android:layout_marginRight="20dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/assign_txt"
+            app:layout_constraintBaseline_toBaselineOf="@+id/assign_txt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+        </com.ruffian.library.widget.RTextView>
+
+        <ImageView
+            android:layout_marginRight="12dp"
+            android:layout_margin="12dp"
+            app:layout_constraintRight_toRightOf="@+id/assign"
+            app:layout_constraintBottom_toBottomOf="@+id/assign"
+            app:layout_constraintTop_toTopOf="@+id/assign"
+            android:rotation="90"
+            android:src="@mipmap/rwdb_jiantou"
+            android:id="@+id/assign_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </ImageView>
+
+        <com.ruffian.library.widget.REditText
+            android:hint="请输入备注信息"
+            android:gravity="left|top"
+            app:corner_radius="3dp"
+            app:border_width_normal="1dp"
+            app:border_color_normal="@color/color_e2e2e2"
+            android:layout_marginTop="22dp"
+            android:id="@+id/content"
+            android:layout_width="0dp"
+            android:layout_height="126dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@null"
+            android:includeFontPadding="false"
+            android:padding="12dp"
+            android:textColor="@color/color_333333"
+            android:textColorHint="@color/color_999999"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/assign_txt">
+        </com.ruffian.library.widget.REditText>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:showDividers="middle"
+            android:divider="@drawable/middle_dividers_horizontal_15dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="33dp"
+            app:layout_constraintRight_toRightOf="@+id/content"
+            app:layout_constraintLeft_toLeftOf="@+id/content"
+            app:layout_constraintTop_toBottomOf="@+id/content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <com.ruffian.library.widget.RTextView
+                android:id="@+id/submit"
+                app:corner_radius="4dp"
+                app:gradient_type="linear"
+                app:gradient_orientation="BL_TR"
+                app:background_normal="@array/invalid_bg"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:text="提交"
+                android:gravity="center"
+                android:paddingVertical="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+            </com.ruffian.library.widget.RTextView>
+
+            <com.ruffian.library.widget.RTextView
+                android:id="@+id/cancel"
+                app:corner_radius="4dp"
+                app:gradient_type="linear"
+                app:gradient_orientation="BL_TR"
+                app:background_normal="@color/color_e3e3e3"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:text="取消"
+                android:gravity="center"
+                android:paddingVertical="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+            </com.ruffian.library.widget.RTextView>
+
+        </LinearLayout>
+
+    </com.ruffian.library.widget.RConstraintLayout>
+
+
+</layout>

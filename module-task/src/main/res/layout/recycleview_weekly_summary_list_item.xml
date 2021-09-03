@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.daqsoft.module_task.viewmodel.itemviewmodel.WeeklySummaryListItemViewModel" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        app:cardBackgroundColor="@color/white"
+        app:cardElevation="1dp"
+        app:cardCornerRadius="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="一周小结4.19~4.23"
+                android:textColor="@color/color_666666"
+                android:textSize="13sp"
+                android:id="@+id/week"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </TextView>
+
+            <com.ruffian.library.widget.RImageView
+                android:layout_marginLeft="20dp"
+                app:is_circle="true"
+                android:src="@mipmap/tongxunlv_touxiang"
+                android:layout_marginTop="20dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/week"
+                android:id="@+id/avatar"
+                android:layout_width="44dp"
+                android:layout_height="44dp">
+            </com.ruffian.library.widget.RImageView>
+
+            <TextView
+                android:text="本周处理事项18件"
+                android:textStyle="bold"
+                android:textColor="@color/color_333333"
+                android:textSize="16sp"
+                android:layout_marginLeft="12dp"
+                app:layout_constraintLeft_toRightOf="@+id/avatar"
+                app:layout_constraintTop_toTopOf="@+id/avatar"
+                android:id="@+id/total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </TextView>
+
+            <TextView
+                android:id="@+id/proportion"
+                android:layout_marginBottom="5dp"
+                app:layout_constraintLeft_toLeftOf="@+id/total"
+                app:layout_constraintBottom_toBottomOf="@+id/avatar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="任务完成率93%"
+                android:textColor="@color/color_666666"
+                android:textSize="12sp">
+            </TextView>
+
+
+            <ProgressBar
+                android:layout_marginTop="8dp"
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="4dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="@+id/proportion"
+                app:layout_constraintTop_toBottomOf="@+id/proportion"
+                android:layout_marginRight="9dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="20dp"
+                android:max="100"
+                android:progress="80"
+                android:progressDrawable="@drawable/progress_task_complete_proportion">
+            </ProgressBar>
+            
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.daqsoft.module_main.viewmodel.MainViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_f4f7ff"
+        android:clipChildren="false">
+
+        <FrameLayout
+            android:layout_marginBottom="56dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/frame_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+        </FrameLayout>
+
+        <me.majiajie.pagerbottomtabstrip.PageNavigationView
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/page_navigation"
+            android:layout_width="0dp"
+            android:layout_height="71dp">
+        </me.majiajie.pagerbottomtabstrip.PageNavigationView>
+
+<!--        <RadioGroup-->
+<!--            android:id="@+id/tabs"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="57dp"-->
+<!--            android:orientation="horizontal"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintRight_toRightOf="parent"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:gravity="center"-->
+<!--            android:paddingTop="12dp"-->
+<!--            android:background="@color/white">-->
+
+<!--            <RadioButton-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_gravity="bottom"-->
+<!--                android:drawableTop="@drawable/selected_task_tab"-->
+<!--                android:gravity="center"-->
+<!--                android:button="@null"-->
+<!--                android:textSize="11sp"-->
+<!--                android:textColor="@color/tabbar_txt"-->
+<!--                android:text="@string/tabbar_task" />-->
+
+<!--            <RadioButton-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_gravity="bottom"-->
+<!--                android:drawableTop="@drawable/selected_work_tab"-->
+<!--                android:button="@null"-->
+<!--                android:textColor="@color/tabbar_txt"-->
+<!--                android:textSize="11sp"-->
+<!--                android:gravity="center"-->
+<!--                android:text="@string/tabbar_work" />-->
+
+<!--            <RadioButton-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_gravity="bottom"-->
+<!--                android:gravity="center"-->
+<!--                android:button="@null" />-->
+
+<!--            <RadioButton-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_gravity="bottom"-->
+<!--                android:gravity="center"-->
+<!--                android:textColor="@color/tabbar_txt"-->
+<!--                android:textSize="11sp"-->
+<!--                android:drawableTop="@drawable/selected_data_tab"-->
+<!--                android:button="@null"-->
+<!--                android:text="@string/tabbar_data" />-->
+
+<!--            <RadioButton-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_gravity="bottom"-->
+<!--                android:drawableTop="@drawable/selected_mine_tab"-->
+<!--                android:gravity="center"-->
+<!--                android:textSize="11sp"-->
+<!--                android:textColor="@color/tabbar_txt"-->
+<!--                android:button="@null"-->
+<!--                android:text="@string/tabbar_mine"/>-->
+<!--        </RadioGroup>-->
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@mipmap/home_menu_bg"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:layout_marginBottom="57dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintRight_toRightOf="parent"-->
+<!--            android:layout_centerHorizontal="true"/>-->
+<!--        <ImageView-->
+<!--            android:id="@+id/iv_jh"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/selected_jhy_tab"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            app:layout_constraintRight_toRightOf="parent"-->
+<!--            android:layout_centerHorizontal="true"/>-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

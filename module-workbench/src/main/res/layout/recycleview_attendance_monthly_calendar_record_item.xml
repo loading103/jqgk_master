@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:background="@color/color_dddddd"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/dot"
+            app:layout_constraintRight_toRightOf="@+id/dot"
+            app:layout_constraintLeft_toLeftOf="@+id/dot"
+            android:id="@+id/top_line"
+            android:layout_width="1dp"
+            android:layout_height="0dp">
+        </View>
+
+        <com.ruffian.library.widget.RView
+            android:id="@+id/dot"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/clock_title"
+            app:layout_constraintBottom_toBottomOf="@id/clock_title"
+            app:layout_constraintTop_toTopOf="@id/clock_title"
+            app:corner_radius="6dp"
+            app:background_normal="@color/color_59abff"
+            app:background_selected="@color/color_fe7800"
+            android:layout_width="6dp"
+            android:layout_height="6dp">
+        </com.ruffian.library.widget.RView>
+
+        <View
+            android:background="@color/color_dddddd"
+            app:layout_constraintTop_toBottomOf="@+id/dot"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="@+id/dot"
+            app:layout_constraintLeft_toLeftOf="@+id/dot"
+            android:id="@+id/bottom_line"
+            android:layout_width="1dp"
+            android:layout_height="0dp">
+        </View>
+
+        <com.ruffian.library.widget.RTextView
+            android:layout_marginLeft="8dp"
+            android:id="@+id/clock_title"
+            android:text="上班打卡  09:00:00     缺卡"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            app:text_color_normal="@color/color_59abff"
+            app:text_color_selected="@color/color_fe7800"
+            app:layout_constraintLeft_toRightOf="@+id/dot"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </com.ruffian.library.widget.RTextView>
+
+        <com.ruffian.library.widget.RConstraintLayout
+            app:background_normal="@color/color_f4f7ff"
+            android:padding="12dp"
+            app:corner_radius="3dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/clock_title"
+            app:layout_constraintTop_toBottomOf="@+id/clock_title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/clock_details"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/clock_time"
+                android:text="打卡时间：07:59:59"
+                android:drawablePadding="8dp"
+                android:textSize="12sp"
+                android:textColor="@color/color_333333"
+                android:includeFontPadding="false"
+                android:drawableLeft="@mipmap/kaoqing_shijian"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </TextView>
+
+            <TextView
+                android:layout_marginTop="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/clock_time"
+                android:id="@+id/clock_address"
+                android:text="广东省深圳市南山区科技园中区科苑路15号"
+                android:drawablePadding="8dp"
+                android:textSize="12sp"
+                android:textColor="@color/color_333333"
+                android:includeFontPadding="false"
+                android:drawableLeft="@mipmap/kaoqing_weizhi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </TextView>
+
+        </com.ruffian.library.widget.RConstraintLayout>
+
+        <com.ruffian.library.widget.RTextView
+            android:id="@+id/supplement_card"
+            android:visibility="gone"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="16dp"
+            app:layout_constraintLeft_toLeftOf="@+id/clock_title"
+            app:layout_constraintTop_toBottomOf="@+id/clock_title"
+            android:textSize="13sp"
+            android:textColor="@color/color_fefefe"
+            android:text="补卡申请"
+            app:corner_radius="3dp"
+            app:background_normal="@color/color_ff9d46"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="8dp"
+            android:includeFontPadding="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </com.ruffian.library.widget.RTextView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

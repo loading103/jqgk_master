@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="ResourceName">
+
+    <data>
+
+    </data>
+
+
+    <com.ruffian.library.widget.RConstraintLayout
+        app:background_normal="@color/white"
+        app:corner_radius_top_right="5dp"
+        app:corner_radius_top_left="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="20dp"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:textColor="@color/color_333333"
+            android:id="@+id/tv_title"
+            android:text="筛选
+"           app:layout_constraintRight_toRightOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </TextView>
+
+        <ImageView
+            android:src="@mipmap/qingjia_guanbing"
+            android:layout_marginRight="20dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_title"
+            android:layout_margin="20dp"
+            android:id="@+id/close"
+            android:layout_width="12dp"
+            android:layout_height="12dp">
+        </ImageView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            tools:itemCount="1"
+            tools:listitem="@layout/recycleview_grid_condition_item"
+            android:layout_marginTop="16dp"
+            android:scrollbars="none"
+            android:overScrollMode="never"
+            app:itemAnimator="@{null}"
+            android:id="@+id/recycler_view"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            tools:itemCount="1"
+            tools:listitem="@layout/recycleview_grid_condition_period"
+            android:scrollbars="none"
+            android:overScrollMode="never"
+            app:itemAnimator="@{null}"
+            android:id="@+id/recycler_view2"
+            android:layout_marginTop="16dp"
+            android:nestedScrollingEnabled="false"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <LinearLayout
+            android:layout_marginHorizontal="20dp"
+            android:id="@+id/ll_root"
+            android:layout_width="match_parent"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_view2"
+            android:layout_height="44dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="28dp">
+            <TextView
+                android:id="@+id/tv_cancel"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:textColor="@color/color_59abff"
+                android:textSize="14sp"
+                android:text="重置"
+                android:background="@drawable/shape_bg_cz"
+                android:gravity="center"/>
+            <TextView
+                android:id="@+id/tv_ensure"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:textColor="@color/white"
+                android:background="@drawable/shape_bg_ensure"
+                android:textSize="14sp"
+                android:text="确定"
+                android:gravity="center"/>
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_root"
+            android:layout_height="36dp">
+        </View>
+    </com.ruffian.library.widget.RConstraintLayout>
+
+
+</layout>

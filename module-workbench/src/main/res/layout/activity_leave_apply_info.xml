@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.daqsoft.module_work.viewmodel.LeaveApplyInfoViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/layout_toolbar"
+            app:toolbarViewModel="@{viewModel.toolbarViewModel}" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:overScrollMode="never"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:background="@color/color_f4f7ff" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/leave_info_cl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_leave_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="26dp"
+                        android:includeFontPadding="false"
+                        android:text="@string/module_workbench_leave_type"
+                        android:textColor="@color/color_999999"
+                        android:textSize="13sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/line1"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="20dp"
+                        android:includeFontPadding="false"
+                        android:textColor="@color/color_ff9d46"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="@+id/tv_leave_type"
+                        app:layout_constraintRight_toRightOf="@+id/tv_leave_type"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_leave_type"
+                        tools:text="事假" />
+
+                    <View
+                        android:id="@+id/line1"
+                        android:layout_width="1dp"
+                        android:layout_height="34dp"
+                        android:background="@color/color_e2e2e2"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toRightOf="@+id/tv_leave_type"
+                        app:layout_constraintRight_toLeftOf="@+id/tv_leave_state"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_leave_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="26dp"
+                        android:includeFontPadding="false"
+                        android:text="@string/module_workbench_leave_state"
+                        android:textColor="@color/color_999999"
+                        android:textSize="13sp"
+                        app:layout_constraintLeft_toRightOf="@+id/line1"
+                        app:layout_constraintRight_toLeftOf="@+id/line2"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="20dp"
+                        android:includeFontPadding="false"
+                        android:textColor="@color/color_21b87c"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="@+id/tv_leave_state"
+                        app:layout_constraintRight_toRightOf="@+id/tv_leave_state"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_leave_state"
+                        tools:text="已通过" />
+
+                    <View
+                        android:id="@+id/line2"
+                        android:layout_width="1dp"
+                        android:layout_height="34dp"
+                        android:background="@color/color_e2e2e2"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toRightOf="@+id/tv_leave_state"
+                        app:layout_constraintRight_toLeftOf="@+id/tv_leave_time"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_leave_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="26dp"
+                        android:includeFontPadding="false"
+                        android:text="@string/module_workbench_time_off"
+                        android:textColor="@color/color_999999"
+                        android:textSize="13sp"
+                        app:layout_constraintLeft_toRightOf="@+id/line2"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="20dp"
+                        android:includeFontPadding="false"
+                        android:textColor="@color/color_59abff"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="@+id/tv_leave_time"
+                        app:layout_constraintRight_toRightOf="@+id/tv_leave_time"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_leave_time"
+                        tools:text="10天" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:background="@color/color_f4f7ff" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@mipmap/qingjia_details_jbxx"
+                        android:drawablePadding="6dp"
+                        android:includeFontPadding="false"
+                        android:text="@string/module_mine_basic_info"
+                        android:textColor="@color/color_59abff"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@color/color_f4f7ff" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="20dp">
+
+                        <TextView
+                            android:id="@+id/tv_leave_type2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:includeFontPadding="false"
+                            android:text="@string/module_workbench_leave_type"
+                            android:textColor="@color/color_333333"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:includeFontPadding="false"
+                            android:textColor="@color/color_666666"
+                            android:textSize="14sp"
+                            tools:text="事假" />
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/color_f4f7ff" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="20dp">
+
+                        <TextView
+                            android:id="@+id/tv_leave_time2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:includeFontPadding="false"
+                            android:text="@string/module_workbench_time_off"
+                            android:textColor="@color/color_333333"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:includeFontPadding="false"
+                            android:textColor="@color/color_666666"
+                            android:textSize="14sp"
+                            tools:text="10天" />
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/color_f4f7ff" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="20dp">
+
+                        <TextView
+                            android:id="@+id/tv_leave_time_start"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:includeFontPadding="false"
+                            android:text="@string/module_workbench_start_time"
+                            android:textColor="@color/color_333333"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:includeFontPadding="false"
+                            android:textColor="@color/color_666666"
+                            android:textSize="14sp"
+                            tools:text="2019-04-01 09:00" />
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/color_f4f7ff" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="20dp">
+
+                        <TextView
+                            android:id="@+id/tv_leave_time_end"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:includeFontPadding="false"
+                            android:text="@string/module_workbench_end_time"
+                            android:textColor="@color/color_333333"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:includeFontPadding="false"
+                            android:textColor="@color/color_666666"
+                            android:textSize="14sp"
+                            tools:text="2019-04-01 09:00" />
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/color_f4f7ff" />
+
+                    <TextView
+                        android:id="@+id/tv_leave_reason"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:includeFontPadding="false"
+                        android:text="@string/module_workbench_leave_reason"
+                        android:textColor="@color/color_333333"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_leave_reason_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:includeFontPadding="false"
+                        android:textColor="@color/color_666666"
+                        android:textSize="14sp"
+                        tools:text="疫情严重，我家属于重灾区，需隔离半个月。" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@color/color_f4f7ff" />
+
+                    <TextView
+                        android:id="@+id/tv_view_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:includeFontPadding="false"
+                        android:text="@string/module_workbench_view_image"
+                        android:textColor="@color/color_333333"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/image"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:nestedScrollingEnabled="false"
+                        android:overScrollMode="never"
+                        android:scrollbars="none"
+                        app:itemAnimator="@{null}"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        tools:itemCount="1"
+                        tools:listitem="@layout/recycleview_alarm_details_annex_item" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/approve"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:overScrollMode="never"
+                        android:scrollbars="none"
+                        app:itemAnimator="@{null}"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/approvers"
+                        tools:itemCount="1"
+                        tools:listitem="@layout/recycleview_supplement_card_approve_detail_item" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:background="@color/color_f4f7ff" />
+
+                <include layout="@layout/layout_include_approval_info" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <com.ruffian.library.widget.RConstraintLayout
+            android:id="@+id/approve_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:background="@color/color_ececec"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="0dp"
+                android:layout_height="1dp">
+            </View>
+
+
+            <com.ruffian.library.widget.RTextView
+                android:layout_marginRight="20dp"
+                android:layout_marginVertical="12dp"
+                app:corner_radius="100dp"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="28dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/agree"
+                app:layout_constraintRight_toRightOf="parent"
+                android:id="@+id/refuse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:background_normal="@color/color_f5f5f5"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:text="@string/module_workbench_approval_denied"
+                android:textColor="@color/color_666666"
+                android:textSize="14sp"
+                />
+
+            <com.ruffian.library.widget.RTextView
+                android:layout_marginLeft="20dp"
+                android:layout_marginVertical="12dp"
+                app:corner_radius="100dp"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="28dp"
+                app:layout_constraintRight_toLeftOf="@+id/refuse"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/agree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:background_normal="@color/color_193399ff"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:text="@string/module_workbench_approval_success"
+                android:textColor="@color/color_3399ff"
+                android:textSize="14sp"
+                />
+        </com.ruffian.library.widget.RConstraintLayout>
+    </LinearLayout>
+</layout>

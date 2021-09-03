@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="ResourceName">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.daqsoft.module_statistics.viewmodel.PassengerFlowStatisticsViewModel" />
+
+    </data>
+
+    <com.ruffian.library.widget.RConstraintLayout
+        android:id="@+id/container"
+        app:gradient_type="linear"
+        app:gradient_orientation="LEFT_RIGHT"
+        app:background_normal="@array/task_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:toolbarViewModel="@{viewModel.toolbarViewModel}"
+            android:id="@+id/include"
+            layout="@layout/layout_toolbar">
+        </include>
+
+        <net.lucode.hackware.magicindicator.MagicIndicator
+            android:background="@color/transparent"
+            app:layout_constraintTop_toBottomOf="@+id/include"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:id="@+id/indicator"
+            android:layout_width="0dp"
+            android:layout_height="44dp">
+        </net.lucode.hackware.magicindicator.MagicIndicator>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            android:id="@+id/view_pager2"
+            android:background="@color/color_f2f5fe"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/indicator"
+            android:layout_width="0dp"
+            android:layout_height="0dp">
+        </androidx.viewpager2.widget.ViewPager2>
+
+    </com.ruffian.library.widget.RConstraintLayout>
+
+
+</layout>

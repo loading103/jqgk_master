@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="d_process" type="id" />
+    <item name="d_designate" type="id" />
+    <item name="d_invalid" type="id" />
+    <item name="d_report" type="id" />
+    <item name="d_finish" type="id" />
+    <item name="d_again" type="id" />
+    <item name="d_withdraw" type="id" />
+
+
+</resources>

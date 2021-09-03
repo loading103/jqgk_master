@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <import type="com.daqsoft.module_mine.R" />
+
+        <variable
+            name="viewModel"
+            type="com.daqsoft.module_mine.viewmodel.SetUpViewModel" />
+
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/color_f4f7ff"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:toolbarViewModel="@{viewModel.toolbarViewModel}"
+            android:id="@+id/include"
+            layout="@layout/layout_toolbar">
+        </include>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@android:color/white"
+            android:paddingHorizontal="20dp"
+            android:id="@+id/audio_cl"
+            android:layout_marginTop="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include"
+            android:layout_width="0dp"
+            android:layout_height="44dp">
+
+            <TextView
+                android:text="消息语音提示"
+                android:textColor="@color/color_333333"
+                android:textSize="15sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </TextView>
+
+            <com.kyleduo.switchbutton.SwitchButton
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/audio_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="14dp"
+                app:kswThumbWidth="16dp"
+                app:kswThumbHeight="16dp"
+                app:kswThumbRangeRatio="3"
+                app:kswTextOff="开"
+                app:kswTextOn="关"
+                app:kswBackDrawable="@drawable/miui_back_drawable"
+                app:kswThumbDrawable="@drawable/miui_thumb_drawable">
+            </com.kyleduo.switchbutton.SwitchButton>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@android:color/white"
+            android:paddingHorizontal="20dp"
+            android:id="@+id/vibrator_cl"
+            android:layout_marginTop="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/audio_cl"
+            android:layout_width="0dp"
+            android:layout_height="44dp">
+
+
+            <TextView
+                android:text="消息震动提示"
+                android:textColor="@color/color_333333"
+                android:textSize="15sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </TextView>
+
+            <com.kyleduo.switchbutton.SwitchButton
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/vibrator_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="14dp"
+                app:kswThumbWidth="16dp"
+                app:kswThumbHeight="16dp"
+                app:kswThumbRangeRatio="3"
+                app:kswTextOff="开"
+                app:kswTextOn="关"
+                app:kswBackDrawable="@drawable/miui_back_drawable"
+                app:kswThumbDrawable="@drawable/miui_thumb_drawable">
+            </com.kyleduo.switchbutton.SwitchButton>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

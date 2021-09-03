@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.daqsoft.module_work.viewmodel.itemviewmodel.DepartmentItemViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <com.ruffian.library.widget.RImageView
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/avatar"
+            android:src="@mipmap/tongxunlv_bumenwenjian"
+            android:layout_width="34dp"
+            android:layout_height="34dp">
+        </com.ruffian.library.widget.RImageView>
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_marginLeft="9dp"
+            android:includeFontPadding="false"
+            android:textColor="@color/color_333333"
+            android:textSize="16sp"
+            tools:text="总裁办"
+            android:text="@{viewModel.dept.depName}"
+            app:layout_constraintLeft_toRightOf="@+id/avatar"
+            app:layout_constraintTop_toTopOf="@+id/avatar"
+            app:layout_constraintBottom_toBottomOf="@+id/avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </TextView>
+
+        <ImageView
+            android:layout_marginRight="20dp"
+            android:src="@mipmap/tongxunlv_jiantou"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/avatar"
+            app:layout_constraintTop_toTopOf="@+id/avatar"
+            android:id="@+id/arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </ImageView>
+
+        <View
+            android:layout_marginTop="16dp"
+            android:background="@color/color_e8e8e8"
+            app:layout_constraintRight_toRightOf="@id/arrow"
+            app:layout_constraintLeft_toLeftOf="@+id/avatar"
+            app:layout_constraintTop_toBottomOf="@+id/avatar"
+            android:layout_width="0dp"
+            android:layout_height="1dp">
+        </View>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

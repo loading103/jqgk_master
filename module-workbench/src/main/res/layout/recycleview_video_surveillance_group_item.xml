@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.daqsoft.module_work.viewmodel.itemviewmodel.DepartmentItemViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.ruffian.library.widget.RTextView
+            android:includeFontPadding="false"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/arrow"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:singleLine="true"
+            android:gravity="center_vertical"
+            app:text_color_normal="@color/color_333333"
+            app:text_color_selected="@color/color_59abff"
+            android:text="全部">
+        </com.ruffian.library.widget.RTextView>
+
+        <ImageView
+            android:layout_marginRight="4dp"
+            android:src="@mipmap/group_arrow"
+            app:layout_constraintRight_toLeftOf="@+id/title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/title"
+            app:layout_constraintTop_toTopOf="@+id/title"
+            android:id="@+id/arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </ImageView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

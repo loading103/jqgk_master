@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_organization"
+    app:startDestination="@id/module_workbench_organizationfragment">
+
+    <action
+        app:launchSingleTop="true"
+        app:popUpToInclusive="true"
+        app:popUpTo="@id/nav_organization"
+        app:destination="@id/module_workbench_organizationfragment"
+        android:id="@+id/nav_graph_action">
+    </action>
+
+    <fragment
+        android:id="@+id/module_workbench_organizationfragment"
+        android:name="com.daqsoft.module_work.fragment.OrganizationFragment"
+        android:label="OrganizationFragment" >
+        <action
+            android:id="@+id/module_workbench_action_module_workbench_organizationfragment_self"
+            app:destination="@id/module_workbench_organizationfragment" />
+    </fragment>
+</navigation>

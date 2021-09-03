@@ -1,0 +1,12 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.daqsoft.module_statistics">
+
+    <application>
+
+        <activity android:name=".activity.TicketStatisticsActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.BarChartFullScreenActivity" android:screenOrientation="landscape" />
+        <activity android:name=".activity.PassengerFlowStatisticsActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.VehicleStatisticsActivity" android:screenOrientation="portrait"/>
+
+    </application>
+</manifest>

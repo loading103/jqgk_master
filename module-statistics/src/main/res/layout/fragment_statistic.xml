@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="ResourceName">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.daqsoft.module_statistics.viewmodel.StatisticsViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:background="@color/color_f4f7ff"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.coordinatorlayout.widget.CoordinatorLayout
+                    android:id="@+id/coordinator_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.appbar.AppBarLayout
+                        android:id="@+id/appbar"
+                        android:orientation="vertical"
+                        app:elevation="0dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            app:layout_scrollFlags="scroll"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <com.ruffian.library.widget.RView
+                                android:id="@+id/bg"
+                                app:gradient_type="linear"
+                                app:gradient_orientation="TOP_BOTTOM"
+                                app:background_normal="@array/statistics_bg"
+                                app:layout_constraintBottom_toBottomOf="@+id/wave"
+                                app:layout_constraintTop_toTopOf="@+id/include1"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp">
+                            </com.ruffian.library.widget.RView>
+
+                            <include
+                                android:visibility="invisible"
+                                android:id="@+id/include1"
+                                layout="@layout/layout_toolbar"
+                                app:toolbarViewModel="@{viewModel.toolbarViewModel}" />
+
+                            <com.daqsoft.module_statistics.widget.ScenicComfortView
+                                android:id="@+id/calibration"
+                                android:layout_marginTop="16dp"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/include1"
+                                android:layout_width="190dp"
+                                android:layout_height="115dp">
+                            </com.daqsoft.module_statistics.widget.ScenicComfortView>
+
+                            <ImageView
+                                android:id="@+id/wave"
+                                app:layout_constraintTop_toBottomOf="@+id/calibration"
+                                android:scaleType="centerCrop"
+                                android:src="@mipmap/sj_ssd_bg2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                            </ImageView>
+
+                            <TextView
+                                android:id="@+id/comfort"
+                                android:text="景区舒适度：舒适"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/white"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/calibration"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                            </TextView>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </com.google.android.material.appbar.AppBarLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:overScrollMode="never"
+                        android:scrollbars="none"
+                        app:itemAnimator="@{null}"
+                        app:itemBinding="@{viewModel.itemBinding}"
+                        app:items="@{viewModel.observableList}"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+                <include
+                    android:id="@+id/include"
+                    layout="@layout/layout_toolbar"
+                    app:toolbarViewModel="@{viewModel.toolbarViewModel}" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.daqsoft.module_main">
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.REORDER_TASKS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <application>
+
+        <activity android:name=".activity.MainActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.WelcomeActivity" android:screenOrientation="portrait"/>
+        <!-- 点击通知时，要打开的 activity -->
+        <activity
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme"
+            android:name="com.daqsoft.module_main.activity.OpenClickActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="com.daqsoft.module_main.activity.OpenClickActivity" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activity.SplashActivity" android:theme="@style/SplashTheme" android:screenOrientation="portrait"/>
+
+
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".activity.OnePxActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|navigation|keyboard"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:finishOnTaskLaunch="false"
+            android:launchMode="singleInstance"
+            android:process=":process"
+            android:theme="@style/undeadActivityStyle" >
+        </activity>
+
+
+        <!-- 本地提权前台服务 Service -->
+        <service
+            android:name=".two_progress_alive.LocalForegroundService"
+            android:enabled="true"
+            android:exported="true">
+        </service>
+
+        <!-- 本地服务 , API 18 ~ 25 以上的设备, 关闭通知到专用服务 -->
+        <service
+            android:name=".two_progress_alive.LocalForegroundService$CancelNotificationService"
+            android:enabled="true"
+            android:exported="true">
+        </service>
+
+        <!-- 远程提权前台服务 Service -->
+        <service
+            android:name=".two_progress_alive.RemoteForegroundService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":remote">
+        </service>
+
+        <!-- 远程服务 , API 18 ~ 25 以上的设备, 关闭通知到专用服务 -->
+        <service
+            android:name=".two_progress_alive.RemoteForegroundService$CancelNotificationService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":remote">
+        </service>
+
+        <!-- JobScheduler 拉活 -->
+        <service
+            android:name=".two_progress_alive.KeepAliveJobService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE">
+        </service>
+
+<!--        <service android:name=".service.NewUpdateService" />-->
+        <service android:name=".service.UpdateService" />
+<!--        <receiver android:name="com.daqsoft.module_main.receiver.UpdateBroadcastReceiver">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />-->
+<!--                &lt;!&ndash; <action android:name="android.intent.action.PACKAGE_INSTALL" /> &ndash;&gt;-->
+<!--            </intent-filter>-->
+<!--        </receiver>-->
+    </application>
+
+</manifest>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+
+    <com.ruffian.library.widget.RTextView
+        app:corner_radius="100dp"
+        android:paddingHorizontal="20dp"
+        android:id="@+id/quit"
+        android:textSize="14sp"
+        android:textColor="@color/color_3399ff"
+        android:gravity="center"
+        android:text="退回"
+        app:background_normal="@color/color_193399ff"
+        android:layout_width="wrap_content"
+        android:minWidth="108dp"
+        android:layout_height="32dp">
+    </com.ruffian.library.widget.RTextView>
+
+</layout>

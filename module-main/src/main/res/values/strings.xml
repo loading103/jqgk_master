@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">module-main</string>
+    <string name="tabbar_task">任务</string>
+    <string name="tabbar_work">工作台</string>
+    <string name="tabbar_data">数据</string>
+    <string name="tabbar_mine">我的</string>
+</resources>

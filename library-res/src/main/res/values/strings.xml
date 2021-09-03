@@ -1,0 +1,68 @@
+<resources>
+    <string name="base_name">library-res</string>
+
+    <string name="workbench">工作台</string>
+    <string name="module_workbench_add_leave_apply">发起请假申请</string>
+    <string name="module_workbench_choose">请选择</string>
+    <string name="module_workbench_time_off">请假时长</string>
+    <string name="module_workbench_start_time">开始时间</string>
+    <string name="module_workbench_end_time">结束时间</string>
+    <string name="module_workbench_unit">单位</string>
+    <string name="module_workbench_leave_reason">请假原因</string>
+    <string name="module_workbench_input_leave_reason">请输入请假原因</string>
+    <string name="module_workbench_upload_image">上传图片</string>
+    <string name="module_workbench_approvers">审批人员</string>
+    <string name="module_workbench_cc_staff">抄送人员</string>
+    <string name="module_workbench_leave_type">请假类型</string>
+    <string name="module_workbench_leave_state">审批状态</string>
+    <string name="module_workbench_view_image">查看图片</string>
+    <string name="module_workbench_approval_image">审批信息</string>
+    <string name="module_workbench_submit">提交</string>
+    <string name="module_workbench_submitter">提交人员</string>
+    <string name="module_workbench_sub_time">提交时间</string>
+    <string name="module_workbench_process_time">审批时间</string>
+    <string name="module_workbench_approval_note">审批备注</string>
+    <string name="module_workbench_approval_denied">审批否决</string>
+    <string name="module_workbench_approval_success">审批通过</string>
+    <string name="module_workbench_card_replacement_time">补卡时间</string>
+    <string name="module_workbench_department">所在部门</string>
+    <string name="module_workbench_card_replacement_frequency">补卡班次</string>
+    <string name="module_workbench_card_replacement_reasons">补卡原因</string>
+
+
+    <string name="module_mine_homepage">个人主页</string>
+    <string name="module_mine_basic_info">基本信息</string>
+    <string name="module_mine_avatar">头像</string>
+    <string name="module_mine_gender">性别</string>
+    <string name="module_mine_phone_number">手机</string>
+    <string name="module_mine_mailbox">邮箱</string>
+    <string name="module_mine_birthday">生日</string>
+    <string name="module_mine_wechat">微信</string>
+    <string name="module_mine_landline">座机/分机</string>
+    <string name="module_mine_job_number">工号</string>
+    <string name="module_mine_hometown">籍贯</string>
+    <string name="module_mine_graduated_school">毕业院校</string>
+    <string name="module_mine_graduation_time">毕业时间</string>
+    <string name="module_mine_education">学历</string>
+    <string name="module_mine_major">所学专业</string>
+
+
+    <string name="module_mine_address">现住地址</string>
+    <string name="module_mine_interest">兴趣爱好</string>
+    <string name="module_mine_login_password">登录密码</string>
+    <string name="module_mine_modify_login_password">修改登录密码</string>
+    <string name="module_mine_secondary_password">二级密码</string>
+    <string name="module_mine_modify_secondary_password">修改二级密码</string>
+    <string name="module_mine_sign_out">退出登录</string>
+    <string name="module_mine_lunar_calendar">农历</string>
+    <string name="module_mine_national_calendar">国历</string>
+    <string name="module_mine_save">保存</string>
+    <string name="module_mine_province_city_district">省市区</string>
+
+
+    <string name="network_connection_failed">网络连接失败，请检查网络设置</string>
+    <string name="module_mine_please_enter_phone_number">请输入手机号/登录账号</string>
+    <string name="module_mine_please_enter_log_in_password">请输入登录密码</string>
+    <string name="please_enter_verification_code">请输入验证码</string>
+    <string name="module_mine_log_in">登录</string>
+</resources>

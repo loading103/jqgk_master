@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--工作进度  自定义属性-->
+    <declare-styleable name="GenderProgressBar" tools:ignore="ResourceName">
+        <!--进度背景宽-->
+        <attr name="progress_background_width" format="dimension" />
+        <!--进度背景色-->
+        <attr name="progress_background_color" format="color" />
+        <!--进度条宽-->
+        <attr name="progress_width" format="dimension" />
+        <!--进度颜色-->
+        <attr name="progress_color" format="color" />
+        <!--文字颜色-->
+        <attr name="text_color" format="color" />
+        <!--当前进度-->
+        <attr name="current_progress" format="float" />
+        <!--总进度-->
+        <attr name="total_progress" format="float" />
+    </declare-styleable>
+
+</resources>

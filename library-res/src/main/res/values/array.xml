@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name = "login_btn_bg">
+        <item>@color/color_329aff</item>
+        <item>@color/color_2abaff</item>
+        <item>@color/color_59abff</item>
+    </array>
+
+
+    <array name = "clock_bg">
+        <item>@color/color_329aff</item>
+        <item>@color/color_2abaff</item>
+        <item>@color/color_59abff</item>
+    </array>
+
+    <array name = "task_bg">
+        <item>@color/color_329aff</item>
+        <item>@color/color_2abaff</item>
+    </array>
+
+
+    <array name = "invalid_bg">
+        <item>@color/color_3398ff</item>
+        <item>@color/color_2abbff</item>
+    </array>
+
+
+
+    <array name = "statistics_bg">
+        <item>@color/color_0cb88d</item>
+        <item>@color/color_43e18f</item>
+    </array>
+
+    <array name = "remark_submit_bg">
+        <item>@color/color_3399ff</item>
+        <item>@color/color_26c9ff</item>
+    </array>
+
+</resources>

@@ -1,0 +1,583 @@
+package com.daqsoft.library_base.utils;
+
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
+
+import androidx.annotation.NonNull;
+import androidx.collection.SimpleArrayMap;
+
+import com.daqsoft.mvvmfoundation.base.BaseApplication;
+
+import java.util.Collections;
+import java.util.Map;
+import java.util.Set;
+
+/**
+ * SharedPreferences工具
+ *
+ * @author 周俊蒙
+ * @date 2019/7/2
+ */
+@SuppressLint("ApplySharedPref")
+public final class SPUtils {
+
+    private static final SimpleArrayMap<String, SPUtils> SP_UTILS_MAP = new SimpleArrayMap<>();
+    private SharedPreferences sp;
+    private volatile static SPUtils spUtils;
+
+
+    public static class Config {
+        /**
+         * 当前纬度
+         */
+        public static final String LATITUDE = "latitude";
+        /**
+         * 当前经度
+         */
+        public static final String LONGITUDE = "longitude";
+        /**
+         * 当前省信息
+         */
+        public static final String PROVINCE = "province";
+        /**
+         * 当前城市信息
+         */
+        public static final String CITY = "city";
+        /**
+         * 当前街道信息
+         */
+        public static final String STREET = "street";
+        /**
+         * 当前城市编码
+         */
+        public static final String CITY_CODE = "cityCode";
+        /**
+         * 当前地区编码
+         */
+        public static final String AD_CODE = "adCode";
+        /**
+         * 当前城区信息
+         */
+        public static final String DISTRICT = "district";
+        /**
+         * 地址
+         */
+        public static final String ADDRESS = "address";
+        /**
+         * Token
+         */
+        public static final String TOKEN = "token";
+        /**
+         * 头像
+         */
+        public static final String HEAD_PORTRAIT = "headPortrait";
+        /**
+         * 昵称
+         */
+        public static final String NIKE_NAME = "nikeName";
+        /**
+         * id
+         */
+        public static final String ID = "id";
+        /**
+         * 账号
+         */
+        public static final String ACCOUNT = "account";
+        /**
+         * 用户ID
+         */
+        public static final String UC_ID = "ucId";
+        /**
+         * 小电商token
+         */
+        public static final String UC_TOKEN = "ucToken";
+        /**
+         * QQ的OPenID
+         */
+        public static final String QQ_OPEN_ID = "qq_openid";
+        /**
+         * 微信的OPenID
+         */
+        public static final String WX_OPEN_ID = "wx_openid";
+        /**
+         * 微信的unionid
+         */
+        public static final String WX_UNION_ID = "wx_unionid";
+        public static final String LOGIN_URL = "LOGIN_URL";
+        /**
+         * OSS key value
+         */
+        public static final String OSS_KEY = "OSS_KEY";
+        /**
+         * app 是否第一次打开
+         */
+        public static final String APP_IS_FIRST_LOAD = "first_load";
+        /**
+         * app 唯一id
+         */
+        public static final String APP_SIGN_ID = "app_sign_id";
+        /**
+         * 每日资讯访问时间
+         */
+        public static final String APP_READ_MRZX = "app_read_mrzx";
+        /**
+         * 闪屏图片集合
+         */
+        public static final String APP_SPLASH_IMAGES = "app_splash_images";
+        /**
+         * 预约姓名
+         */
+        public static final String APP_RESERATION_NAME = "app_researtion_name";
+        /**
+         * 预约人手机号
+         */
+        public static final String APP_RESERATION_PHONE = "app_reseration_phone";
+        /**
+         * 预约人身份证号
+         */
+        public static final String APP_RESERATION_IDCARD = "app_reseration_idcard";
+        /**
+         * 预约人身份证类型
+         */
+        public static final String APP_RESERATION_CARD_TYPE = "app_reseration_card_type";
+    }
+
+    /**
+     * @name sharedPreferences 文件名称
+     */
+    public static class SpNameConfig {
+        /**
+         * 缓存闪屏广告信息
+         */
+        public static final String SPLASH_ADS = "splash_ads";
+        /**
+         * 预约信息缓存
+         */
+        public static final String SPLASH_RESERATION_INFO = "app_reseration_info";
+        /**
+         * 是否下载成功
+         */
+        public static final String SPLASH_VIDEO_SUCCESS_V = "splash_video_success_v";
+
+        public static final String SPLASH_VIDEO_SUCCESS_H = "splash_video_success_h";
+    }
+
+    /**
+     * Return the single {@link SPUtils} instance
+     *
+     * @return the single {@link SPUtils} instance
+     */
+    public static SPUtils getInstance() {
+        return getInstance("", Context.MODE_PRIVATE);
+    }
+
+    /**
+     * Return the single {@link SPUtils} instance
+     *
+     * @param mode Operating mode.
+     * @return the single {@link SPUtils} instance
+     */
+    public static SPUtils getInstance(final int mode) {
+        return getInstance("", mode);
+    }
+
+    /**
+     * Return the single {@link SPUtils} instance
+     *
+     * @param spName The name of sp.
+     * @return the single {@link SPUtils} instance
+     */
+    public static SPUtils getInstance(String spName) {
+        return getInstance(spName, Context.MODE_PRIVATE);
+    }
+
+    /**
+     * Return the single {@link SPUtils} instance
+     *
+     * @param spName The name of sp.
+     * @param mode   Operating mode.
+     * @return the single {@link SPUtils} instance
+     */
+    public static SPUtils getInstance(String spName, final int mode) {
+        if (isSpace(spName)) spName = "spUtils";
+        spUtils = SP_UTILS_MAP.get(spName);
+        if (spUtils == null) {
+            synchronized (SPUtils.class) {
+                if (spUtils == null) {
+                    spUtils = new SPUtils(spName, mode);
+                    SP_UTILS_MAP.put(spName, spUtils);
+                }
+            }
+        }
+        return spUtils;
+    }
+
+    private SPUtils(final String spName) {
+        sp = BaseApplication.Companion.getInstance().getSharedPreferences(spName, Context.MODE_PRIVATE);
+    }
+
+    private SPUtils(final String spName, final int mode) {
+        sp = BaseApplication.Companion.getInstance().getSharedPreferences(spName, mode);
+    }
+
+    /**
+     * Put the string value in sp.
+     *
+     * @param key   The key of sp.
+     * @param value The value of sp.
+     */
+    public void put(@NonNull final String key, final String value) {
+        put(key, value, false);
+    }
+
+    /**
+     * Put the string value in sp.
+     *
+     * @param key      The key of sp.
+     * @param value    The value of sp.
+     * @param isCommit True to use {@link SharedPreferences.Editor#commit()},
+     *                 false to use {@link SharedPreferences.Editor#apply()}
+     */
+    public void put(@NonNull final String key, final String value, final boolean isCommit) {
+        if (isCommit) {
+            sp.edit().putString(key, value).commit();
+        } else {
+            sp.edit().putString(key, value).apply();
+        }
+    }
+
+    /**
+     * Return the string value in sp.
+     *
+     * @param key The key of sp.
+     * @return the string value if sp exists or {@code ""} otherwise
+     */
+    public String getString(@NonNull final String key) {
+        return getString(key, "");
+    }
+
+    /**
+     * Return the string value in sp.
+     *
+     * @param key          The key of sp.
+     * @param defaultValue The default value if the sp doesn't exist.
+     * @return the string value if sp exists or {@code defaultValue} otherwise
+     */
+    public String getString(@NonNull final String key, final String defaultValue) {
+        return sp.getString(key, defaultValue);
+    }
+
+    /**
+     * Put the int value in sp.
+     *
+     * @param key   The key of sp.
+     * @param value The value of sp.
+     */
+    public void put(@NonNull final String key, final int value) {
+        put(key, value, false);
+    }
+
+    /**
+     * Put the int value in sp.
+     *
+     * @param key      The key of sp.
+     * @param value    The value of sp.
+     * @param isCommit True to use {@link SharedPreferences.Editor#commit()},
+     *                 false to use {@link SharedPreferences.Editor#apply()}
+     */
+    public void put(@NonNull final String key, final int value, final boolean isCommit) {
+        if (isCommit) {
+            sp.edit().putInt(key, value).commit();
+        } else {
+            sp.edit().putInt(key, value).apply();
+        }
+    }
+
+    /**
+     * Return the int value in sp.
+     *
+     * @param key The key of sp.
+     * @return the int value if sp exists or {@code -1} otherwise
+     */
+    public int getInt(@NonNull final String key) {
+        return getInt(key, -1);
+    }
+
+    /**
+     * Return the int value in sp.
+     *
+     * @param key          The key of sp.
+     * @param defaultValue The default value if the sp doesn't exist.
+     * @return the int value if sp exists or {@code defaultValue} otherwise
+     */
+    public int getInt(@NonNull final String key, final int defaultValue) {
+        return sp.getInt(key, defaultValue);
+    }
+
+    /**
+     * Put the long value in sp.
+     *
+     * @param key   The key of sp.
+     * @param value The value of sp.
+     */
+    public void put(@NonNull final String key, final long value) {
+        put(key, value, false);
+    }
+
+    /**
+     * Put the long value in sp.
+     *
+     * @param key      The key of sp.
+     * @param value    The value of sp.
+     * @param isCommit True to use {@link SharedPreferences.Editor#commit()},
+     *                 false to use {@link SharedPreferences.Editor#apply()}
+     */
+    public void put(@NonNull final String key, final long value, final boolean isCommit) {
+        if (isCommit) {
+            sp.edit().putLong(key, value).commit();
+        } else {
+            sp.edit().putLong(key, value).apply();
+        }
+    }
+
+    /**
+     * Return the long value in sp.
+     *
+     * @param key The key of sp.
+     * @return the long value if sp exists or {@code -1} otherwise
+     */
+    public long getLong(@NonNull final String key) {
+        return getLong(key, -1L);
+    }
+
+    /**
+     * Return the long value in sp.
+     *
+     * @param key          The key of sp.
+     * @param defaultValue The default value if the sp doesn't exist.
+     * @return the long value if sp exists or {@code defaultValue} otherwise
+     */
+    public long getLong(@NonNull final String key, final long defaultValue) {
+        return sp.getLong(key, defaultValue);
+    }
+
+    /**
+     * Put the float value in sp.
+     *
+     * @param key   The key of sp.
+     * @param value The value of sp.
+     */
+    public void put(@NonNull final String key, final float value) {
+        put(key, value, false);
+    }
+
+    /**
+     * Put the float value in sp.
+     *
+     * @param key      The key of sp.
+     * @param value    The value of sp.
+     * @param isCommit True to use {@link SharedPreferences.Editor#commit()},
+     *                 false to use {@link SharedPreferences.Editor#apply()}
+     */
+    public void put(@NonNull final String key, final float value, final boolean isCommit) {
+        if (isCommit) {
+            sp.edit().putFloat(key, value).commit();
+        } else {
+            sp.edit().putFloat(key, value).apply();
+        }
+    }
+
+    /**
+     * Return the float value in sp.
+     *
+     * @param key The key of sp.
+     * @return the float value if sp exists or {@code -1f} otherwise
+     */
+    public float getFloat(@NonNull final String key) {
+        return getFloat(key, -1f);
+    }
+
+    /**
+     * Return the float value in sp.
+     *
+     * @param key          The key of sp.
+     * @param defaultValue The default value if the sp doesn't exist.
+     * @return the float value if sp exists or {@code defaultValue} otherwise
+     */
+    public float getFloat(@NonNull final String key, final float defaultValue) {
+        return sp.getFloat(key, defaultValue);
+    }
+
+    /**
+     * Put the boolean value in sp.
+     *
+     * @param key   The key of sp.
+     * @param value The value of sp.
+     */
+    public void put(@NonNull final String key, final boolean value) {
+        put(key, value, false);
+    }
+
+    /**
+     * Put the boolean value in sp.
+     *
+     * @param key      The key of sp.
+     * @param value    The value of sp.
+     * @param isCommit True to use {@link SharedPreferences.Editor#commit()},
+     *                 false to use {@link SharedPreferences.Editor#apply()}
+     */
+    public void put(@NonNull final String key, final boolean value, final boolean isCommit) {
+        if (isCommit) {
+            sp.edit().putBoolean(key, value).commit();
+        } else {
+            sp.edit().putBoolean(key, value).apply();
+        }
+    }
+
+    /**
+     * Return the boolean value in sp.
+     *
+     * @param key The key of sp.
+     * @return the boolean value if sp exists or {@code false} otherwise
+     */
+    public boolean getBoolean(@NonNull final String key) {
+        return getBoolean(key, false);
+    }
+
+    /**
+     * Return the boolean value in sp.
+     *
+     * @param key          The key of sp.
+     * @param defaultValue The default value if the sp doesn't exist.
+     * @return the boolean value if sp exists or {@code defaultValue} otherwise
+     */
+    public boolean getBoolean(@NonNull final String key, final boolean defaultValue) {
+        return sp.getBoolean(key, defaultValue);
+    }
+
+    /**
+     * Put the set of string value in sp.
+     *
+     * @param key   The key of sp.
+     * @param value The value of sp.
+     */
+    public void put(@NonNull final String key, final Set<String> value) {
+        put(key, value, false);
+    }
+
+    /**
+     * Put the set of string value in sp.
+     *
+     * @param key      The key of sp.
+     * @param value    The value of sp.
+     * @param isCommit True to use {@link SharedPreferences.Editor#commit()},
+     *                 false to use {@link SharedPreferences.Editor#apply()}
+     */
+    public void put(@NonNull final String key,
+                    final Set<String> value,
+                    final boolean isCommit) {
+        if (isCommit) {
+            sp.edit().putStringSet(key, value).commit();
+        } else {
+            sp.edit().putStringSet(key, value).apply();
+        }
+    }
+
+    /**
+     * Return the set of string value in sp.
+     *
+     * @param key The key of sp.
+     * @return the set of string value if sp exists
+     * or {@code Collections.<String>emptySet()} otherwise
+     */
+    public Set<String> getStringSet(@NonNull final String key) {
+        return getStringSet(key, Collections.<String>emptySet());
+    }
+
+    /**
+     * Return the set of string value in sp.
+     *
+     * @param key          The key of sp.
+     * @param defaultValue The default value if the sp doesn't exist.
+     * @return the set of string value if sp exists or {@code defaultValue} otherwise
+     */
+    public Set<String> getStringSet(@NonNull final String key,
+                                    final Set<String> defaultValue) {
+        return sp.getStringSet(key, defaultValue);
+    }
+
+    /**
+     * Return all values in sp.
+     *
+     * @return all values in sp
+     */
+    public Map<String, ?> getAll() {
+        return sp.getAll();
+    }
+
+    /**
+     * Return whether the sp contains the preference.
+     *
+     * @param key The key of sp.
+     * @return {@code true}: yes<br>{@code false}: no
+     */
+    public boolean contains(@NonNull final String key) {
+        return sp.contains(key);
+    }
+
+    /**
+     * Remove the preference in sp.
+     *
+     * @param key The key of sp.
+     */
+    public void remove(@NonNull final String key) {
+        remove(key, false);
+    }
+
+    /**
+     * Remove the preference in sp.
+     *
+     * @param key      The key of sp.
+     * @param isCommit True to use {@link SharedPreferences.Editor#commit()},
+     *                 false to use {@link SharedPreferences.Editor#apply()}
+     */
+    public void remove(@NonNull final String key, final boolean isCommit) {
+        if (isCommit) {
+            sp.edit().remove(key).commit();
+        } else {
+            sp.edit().remove(key).apply();
+        }
+    }
+
+    /**
+     * Remove all preferences in sp.
+     */
+    public void clear() {
+        clear(false);
+    }
+
+    /**
+     * Remove all preferences in sp.
+     *
+     * @param isCommit True to use {@link SharedPreferences.Editor#commit()},
+     *                 false to use {@link SharedPreferences.Editor#apply()}
+     */
+    public void clear(final boolean isCommit) {
+        if (isCommit) {
+            sp.edit().clear().commit();
+        } else {
+            sp.edit().clear().apply();
+        }
+    }
+
+    private static boolean isSpace(final String s) {
+        if (s == null) return true;
+        for (int i = 0, len = s.length(); i < len; ++i) {
+            if (!Character.isWhitespace(s.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+}

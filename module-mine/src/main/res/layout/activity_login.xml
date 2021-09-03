@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <import type="com.daqsoft.module_mine.R" />
+
+        <variable
+            name="viewModel"
+            type="com.daqsoft.module_mine.viewmodel.LoginViewModel" />
+
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/icon"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/denglv_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="84dp"
+            app:layout_constraintTop_toTopOf="parent">
+        </ImageView>
+
+        <TextView
+            android:textColor="@color/color_333333"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:text="景e管"
+            app:layout_constraintTop_toBottomOf="@+id/icon"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:id="@+id/name"
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </TextView>
+
+        <ImageView
+            android:src="@drawable/selector_login_phone"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="30dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name"
+            android:id="@+id/account_number_icon"
+            android:layout_width="16dp"
+            app:selectedFlag="@{viewModel.accountIconSelected}"
+            android:layout_height="16dp">
+        </ImageView>
+
+        <EditText
+            android:id="@+id/accountNumber"
+            android:inputType="phone"
+            app:textChanged="@{viewModel.accountNumberChangedListener}"
+            android:textSize="16sp"
+            android:textColor="@color/color_333333"
+            android:hint="@string/module_mine_please_enter_phone_number"
+            android:textColorHint="@color/color_999999"
+            app:layout_goneMarginRight="20dp"
+            android:maxLength="11"
+            android:text="@={viewModel.accountNumber}"
+            android:background="@null"
+            android:layout_marginHorizontal="12dp"
+            app:layout_constraintLeft_toRightOf="@+id/account_number_icon"
+            app:layout_constraintBottom_toBottomOf="@+id/account_number_icon"
+            app:layout_constraintTop_toTopOf="@+id/account_number_icon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+        </EditText>
+
+        <ImageView
+            app:onClickCommand="@{viewModel.accountNumberCleanOnClick}"
+            android:visibility="@{viewModel.accountNumberCleanVisible}"
+            android:src="@mipmap/dl_close"
+            android:layout_marginRight="30dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:id="@+id/account_number_clear"
+            app:layout_constraintTop_toTopOf="@+id/account_number_icon"
+            app:layout_constraintBottom_toBottomOf="@id/account_number_icon"
+            android:layout_width="11dp"
+            android:layout_height="11dp">
+        </ImageView>
+
+        <View
+            android:id="@+id/account_number_dividing_line"
+            android:layout_marginHorizontal="30dp"
+            android:background="@color/color_e2e2e2"
+            android:layout_marginTop="25dp"
+            app:layout_constraintTop_toBottomOf="@id/account_number_icon"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="1dp">
+        </View>
+
+
+        <ImageView
+            android:src="@mipmap/dl_mm_hover"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="30dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/account_number_dividing_line"
+            android:id="@+id/password_icon"
+            android:layout_width="16dp"
+            android:layout_height="16dp">
+        </ImageView>
+
+
+        <EditText
+            android:maxLength="20"
+            android:id="@+id/password"
+            android:inputType="textPassword"
+            android:hint="@string/module_mine_please_enter_log_in_password"
+            android:textColorHint="@color/color_999999"
+            android:textColor="@color/color_333333"
+            android:textSize="16sp"
+            app:layout_goneMarginRight="20dp"
+            app:layout_constraintTop_toTopOf="@+id/password_icon"
+            app:layout_constraintBottom_toBottomOf="@+id/password_icon"
+            app:layout_constraintRight_toLeftOf="@+id/password_clear"
+            android:text="@={viewModel.password}"
+            android:background="@null"
+            android:layout_marginHorizontal="10dp"
+            app:layout_constraintLeft_toRightOf="@+id/password_icon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+        </EditText>
+
+        <ImageView
+            app:onClickCommand="@{viewModel.passwordCleanOnClick}"
+            app:layout_goneMarginRight="30dp"
+            android:layout_marginRight="16dp"
+            android:src="@mipmap/dl_close"
+            app:layout_constraintRight_toLeftOf="@+id/password_display"
+            android:id="@+id/password_clear"
+            app:layout_constraintBottom_toBottomOf="@id/password_icon"
+            app:layout_constraintTop_toTopOf="@+id/password_icon"
+            android:layout_width="11dp"
+            android:layout_height="11dp">
+        </ImageView>
+
+        <ImageView
+            android:src="@mipmap/dl_yj"
+            app:onClickCommand="@{viewModel.passwordVisibleOnClick}"
+            app:loadResImage="@{viewModel.passwordVisibleIcon}"
+            android:layout_marginRight="30dp"
+            app:layout_constraintBottom_toBottomOf="@+id/password_icon"
+            app:layout_constraintTop_toTopOf="@+id/password_icon"
+            app:layout_constraintRight_toRightOf="parent"
+            android:id="@+id/password_display"
+            android:layout_width="16dp"
+            android:layout_height="16dp">
+        </ImageView>
+
+        <androidx.constraintlayout.widget.Group
+            android:visibility="@{viewModel.passVisible}"
+            app:constraint_referenced_ids="password_clear,password_icon,password_dividing_line
+            ,password_display,password,"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </androidx.constraintlayout.widget.Group>
+
+        <View
+            android:id="@+id/password_dividing_line"
+            android:layout_marginHorizontal="30dp"
+            android:background="@color/color_e2e2e2"
+            android:layout_marginTop="25dp"
+            app:layout_constraintTop_toBottomOf="@id/password_icon"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_height="1dp"
+            android:layout_width="0dp">
+        </View>
+
+
+
+        <ImageView
+            android:src="@drawable/selector_login_verify"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="30dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/password_dividing_line"
+            android:id="@+id/verify_code_icon"
+            android:layout_width="16dp"
+            app:selectedFlag="@{viewModel.verifyIconSelected}"
+            android:layout_height="16dp">
+        </ImageView>
+
+        <EditText
+            android:maxLength="6"
+            android:id="@+id/verify_code"
+            app:textChanged="@{viewModel.passwordChangedListener}"
+            android:hint="@string/please_enter_verification_code"
+            android:textColorHint="@color/color_999999"
+            android:textColor="@color/color_333333"
+            android:textSize="16sp"
+            app:layout_goneMarginRight="20dp"
+            app:layout_constraintTop_toTopOf="@+id/verify_code_icon"
+            app:layout_constraintBottom_toBottomOf="@+id/verify_code_icon"
+            app:layout_constraintLeft_toRightOf="@+id/verify_code_icon"
+            app:layout_constraintRight_toLeftOf="@+id/verify_code_image"
+            android:text="@={viewModel.verifyCodeObservable}"
+            android:background="@null"
+            android:layout_marginHorizontal="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+        </EditText>
+
+        <com.ruffian.library.widget.RTextView
+            app:onClickCommand="@{viewModel.verifyCodeOnClick}"
+            android:layout_marginRight="30dp"
+            app:layout_constraintBottom_toBottomOf="@+id/verify_code_icon"
+            app:layout_constraintTop_toTopOf="@+id/verify_code_icon"
+            app:layout_constraintRight_toRightOf="parent"
+            android:id="@+id/verify_code_image"
+            android:text="获取验证码"
+            app:background_normal="@color/white"
+            app:corner_radius="3dp"
+            app:border_color_normal="@color/color_e2e2e2"
+            app:border_width_normal="1dp"
+            android:gravity="center"
+            android:textSize="13sp"
+            android:paddingVertical="8dp"
+            android:singleLine="true"
+            android:layout_height="wrap_content"
+            android:layout_width="90dp"/>
+
+        <View
+            android:id="@+id/verify_code_dividing_line"
+            android:layout_marginHorizontal="30dp"
+            android:background="@color/color_e2e2e2"
+            android:layout_marginTop="25dp"
+            app:layout_constraintTop_toBottomOf="@id/verify_code_icon"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_height="1dp"
+            android:layout_width="0dp">
+        </View>
+
+        <androidx.constraintlayout.widget.Group
+            android:visibility="@{viewModel.verifyCodeVisible}"
+            app:constraint_referenced_ids="verify_code_icon,verify_code,verify_code_image,verify_code_dividing_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </androidx.constraintlayout.widget.Group>
+
+        <TextView
+            android:visibility="@{viewModel.errorMessageVisible}"
+            android:textSize="12sp"
+            android:drawablePadding="5dp"
+            android:drawableLeft="@mipmap/dl_ts"
+            android:id="@+id/error_message"
+            android:textColor="@color/color_f12c20"
+            android:text="@{viewModel.errorMessage}"
+            android:layout_marginHorizontal="30dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/verify_code_dividing_line"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+        </TextView>
+
+
+        <com.ruffian.library.widget.RTextView
+            app:onClickCommand="@{viewModel.logInOnClick}"
+            android:gravity="center"
+            android:text="@string/module_mine_log_in"
+            android:textSize="17sp"
+            android:textColor="@color/white"
+            app:background_normal="@array/login_btn_bg"
+            app:gradient_type="linear"
+            app:gradient_orientation="LEFT_RIGHT"
+            app:corner_radius="22dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/error_message"
+            android:id="@+id/log_in"
+            android:layout_width="0dp"
+            android:layout_height="44dp">
+        </com.ruffian.library.widget.RTextView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ll_root"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/log_in"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp">
+
+            <CheckBox
+                android:id="@+id/check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/register_check_bg"
+                android:checked="@={viewModel.checkedFild}"
+                android:text="  您已阅读并同意"
+                android:textColor="@color/color_666666"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="《隐私权政策》"
+                android:textColor="@color/color_329aff"
+                android:textSize="14sp"
+                app:onClickCommand="@{viewModel.privateOnClick}"
+                app:layout_constraintBottom_toBottomOf="@+id/check"
+                app:layout_constraintLeft_toRightOf="@+id/check"
+                app:layout_constraintTop_toTopOf="@+id/check" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

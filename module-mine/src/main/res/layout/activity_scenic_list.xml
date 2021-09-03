@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <import type="com.daqsoft.module_mine.R" />
+
+        <variable
+            name="viewModel"
+            type="com.daqsoft.module_mine.viewmodel.ScenicListViewModel" />
+
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            app:layout_constraintBottom_toTopOf="@+id/enter"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/background"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:src="@mipmap/scenic_list_bg_9png"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                </ImageView>
+
+                <TextView
+                    android:text="景区名称"
+                    android:layout_marginTop="28dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/color_333333"
+                    android:textSize="18sp"
+                    android:id="@+id/title"
+                    android:layout_marginHorizontal="20dp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/background"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                </TextView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    tools:itemCount="5"
+                    tools:listitem="@layout/recycleview_scenic_list_item"
+                    android:layout_marginTop="12dp"
+                    android:nestedScrollingEnabled="false"
+                    android:id="@+id/recycler_view"
+                    android:overScrollMode="never"
+                    android:scrollbars="none"
+                    app:itemAnimator="@{null}"
+                    app:layout_constraintTop_toBottomOf="@+id/title"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+        <include
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:toolbarViewModel="@{viewModel.toolbarViewModel}"
+            android:id="@+id/include"
+            layout="@layout/layout_toolbar">
+        </include>
+
+        <com.ruffian.library.widget.RTextView
+            android:id="@+id/enter"
+            android:text="立即进入"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:gravity="center"
+            android:background="@color/color_2abaff"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="44dp">
+        </com.ruffian.library.widget.RTextView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

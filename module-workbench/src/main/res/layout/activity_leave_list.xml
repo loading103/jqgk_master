@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.daqsoft.module_work.viewmodel.LeaveListViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_f4f7ff"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/layout_toolbar"
+            app:toolbarViewModel="@{viewModel.toolbarViewModel}" />
+
+
+        <LinearLayout
+            android:id="@+id/container"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_px"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="50dp"
+                    android:drawableRight="@mipmap/qingjia_paixun"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
+                    android:text="排序"
+                    android:textColor="@color/color_333333"
+                    android:textSize="15sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/tv_choose" />
+
+                <TextView
+                    android:id="@+id/tv_choose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableRight="@mipmap/qingjia_shaixuan"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
+                    android:text="筛选"
+                    android:textColor="@color/color_333333"
+                    android:textSize="15sp"
+                    app:layout_constraintLeft_toRightOf="@+id/tv_px"
+                    app:layout_constraintRight_toRightOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.scwang.smart.refresh.layout.SmartRefreshLayout
+                android:id="@+id/refresh"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:overScrollMode="never"
+                    android:scrollbars="none"
+                    app:diffConfig="@{viewModel.diff}"
+                    app:itemAnimator="@{null}"
+                    app:itemBinding="@{viewModel.itemBinding}"
+                    app:items="@{viewModel.pageList}"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/recycleview_supplement_card_list_item" />
+            </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.daqsoft.module_work.viewmodel.AttendanceViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            app:toolbarViewModel="@{viewModel.toolbarViewModel}"
+            android:id="@+id/include"
+            layout="@layout/layout_toolbar">
+        </include>
+
+        <View
+            android:id="@+id/include_line"
+            android:background="@color/color_e7e7e7"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include"
+            android:layout_width="0dp"
+            android:layout_height="1dp">
+        </View>
+
+        <FrameLayout
+            app:layout_constraintBottom_toTopOf="@+id/page_navigation"
+            app:layout_constraintTop_toBottomOf="@+id/include_line"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/frame_layout"
+            android:layout_width="0dp"
+            android:layout_height="0dp">
+        </FrameLayout>
+
+        <me.majiajie.pagerbottomtabstrip.PageNavigationView
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/page_navigation"
+            android:layout_width="0dp"
+            android:layout_height="56dp">
+        </me.majiajie.pagerbottomtabstrip.PageNavigationView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

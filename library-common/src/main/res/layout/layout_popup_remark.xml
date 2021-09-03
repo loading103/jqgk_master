@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="ResourceName">
+
+    <data>
+
+    </data>
+
+
+    <com.ruffian.library.widget.RConstraintLayout
+        app:corner_radius_top_left="10dp"
+        app:corner_radius_top_right="10dp"
+        app:background_normal="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="28dp"
+            android:textColor="@color/color_333333"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </TextView>
+
+        <ImageView
+            android:layout_marginRight="20dp"
+            android:id="@+id/close"
+            app:layout_constraintBottom_toBottomOf="@+id/title"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/title"
+            android:src="@mipmap/qingjia_guanbing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </ImageView>
+
+        <com.ruffian.library.widget.REditText
+            android:gravity="left|top"
+            app:corner_radius="3dp"
+            app:border_width_normal="1dp"
+            app:border_color_normal="@color/color_e2e2e2"
+            android:layout_marginTop="8dp"
+            android:id="@+id/remark"
+            android:layout_width="0dp"
+            android:layout_height="126dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@null"
+            android:includeFontPadding="false"
+            android:padding="12dp"
+            android:textColor="@color/color_333333"
+            android:textColorHint="@color/color_999999"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title">
+        </com.ruffian.library.widget.REditText>
+
+        <com.ruffian.library.widget.RTextView
+            app:background_normal="@array/remark_submit_bg"
+            app:gradient_orientation="LEFT_RIGHT"
+            app:gradient_type="linear"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:corner_radius="22dp"
+            android:layout_marginTop="28dp"
+            app:layout_constraintRight_toRightOf="@+id/remark"
+            app:layout_constraintLeft_toLeftOf="@+id/remark"
+            app:layout_constraintTop_toBottomOf="@+id/remark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="33dp"
+            android:id="@+id/determine"
+            android:layout_width="0dp"
+            android:layout_height="44dp">
+        </com.ruffian.library.widget.RTextView>
+
+    </com.ruffian.library.widget.RConstraintLayout>
+
+
+</layout>

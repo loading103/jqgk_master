@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="info"
+            type="com.daqsoft.module_mine.repository.pojo.vo.CompanyInfo" />
+
+    </data>
+
+
+   <androidx.constraintlayout.widget.ConstraintLayout
+       app:enabledFlag="@{info.status == 1}"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+       <com.ruffian.library.widget.RTextView
+           android:id="@+id/name"
+           tools:text="这里是景区名称"
+           android:padding="20dp"
+           android:text="@{info.companyName}"
+           android:textSize="15sp"
+           app:enabledFlag="@{info.status == 1}"
+           app:text_color_normal="@color/color_333333"
+           app:text_color_unable="@color/color_bfbfbf"
+           app:layout_constraintLeft_toLeftOf="parent"
+           app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintRight_toRightOf="parent"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content">
+       </com.ruffian.library.widget.RTextView>
+
+       <TextView
+           app:isVisible="@{info.status != 1}"
+           android:textColor="@color/color_666666"
+           android:textSize="14sp"
+           android:text="已禁用"
+           android:padding="20dp"
+           app:layout_constraintRight_toRightOf="parent"
+           app:layout_constraintBaseline_toBaselineOf="@+id/name"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content">
+       </TextView>
+
+       <View
+           android:layout_marginHorizontal="20dp"
+           android:background="@color/color_e8e8e8"
+           app:layout_constraintRight_toRightOf="parent"
+           app:layout_constraintLeft_toLeftOf="parent"
+           app:layout_constraintTop_toBottomOf="@+id/name"
+           android:layout_width="0dp"
+           android:layout_height="1dp">
+       </View>
+
+   </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

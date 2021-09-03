@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.daqsoft.module_work.viewmodel.IncidentListViewModel" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            app:toolbarViewModel="@{viewModel.toolbarViewModel}"
+            android:id="@+id/include"
+            layout="@layout/layout_toolbar">
+        </include>
+
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:background="@color/color_f4f7ff"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include"
+            android:id="@+id/refresh"
+            android:layout_width="0dp"
+            android:layout_height="0dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                app:itemBinding="@{viewModel.itemBinding}"
+                app:items="@{viewModel.pageList}"
+                app:diffConfig = "@{viewModel.diff}"
+                android:paddingHorizontal="20dp"
+                android:background="@color/color_f4f7ff"
+                tools:itemCount="1"
+                tools:listitem="@layout/recycleview_incident_list_item"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                app:itemAnimator="@{null}"
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </androidx.recyclerview.widget.RecyclerView>
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

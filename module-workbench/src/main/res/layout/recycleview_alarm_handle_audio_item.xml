@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginLeft="9dp"
+            android:layout_marginTop="9dp"
+            android:id="@+id/speaker"
+            android:background="@color/color_f4f7ff"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="44dp"
+            android:layout_height="44dp">
+
+            <ImageView
+                android:id="@+id/volume"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@drawable/animation_audio_play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </ImageView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <ImageView
+            android:id="@+id/delete"
+            android:translationX="-9dp"
+            app:layout_constraintLeft_toRightOf="@+id/speaker"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@mipmap/sjcl_sc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </ImageView>
+
+        <TextView
+            android:id="@+id/duration"
+            android:layout_marginTop="8dp"
+            android:text="25″"
+            android:textSize="16sp"
+            android:textColor="@color/color_5c5c66"
+            app:layout_constraintRight_toRightOf="@+id/speaker"
+            app:layout_constraintLeft_toLeftOf="@+id/speaker"
+            app:layout_constraintTop_toBottomOf="@+id/speaker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </TextView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

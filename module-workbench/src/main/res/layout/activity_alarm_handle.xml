@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.daqsoft.module_work.viewmodel.AlarmHandleViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:toolbarViewModel="@{viewModel.toolbarViewModel}"
+            android:id="@+id/include"
+            layout="@layout/layout_toolbar">
+        </include>
+
+        <androidx.core.widget.NestedScrollView
+            android:scrollbars="none"
+            android:overScrollMode="never"
+            android:background="@color/color_f4f7ff"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/process_cl"
+            app:layout_constraintTop_toBottomOf="@+id/include"
+            android:layout_width="0dp"
+            android:layout_height="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:background="@color/color_f4f7ff"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/top_cl"
+                    android:paddingBottom="32dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:background="@color/white"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                    <View
+                        android:id="@+id/include_line"
+                        android:background="@color/color_f4f7ff"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_width="0dp"
+                        android:layout_height="8dp">
+                    </View>
+
+
+                    <TextView
+                        android:text="办理结果"
+                        android:id="@+id/result_txt"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:textColor="@color/color_333333"
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    </TextView>
+
+                    <com.ruffian.library.widget.RConstraintLayout
+                        android:layout_marginTop="12dp"
+                        android:layout_marginHorizontal="20dp"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/result_txt"
+                        android:id="@+id/result_cl"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:maxLength="200"
+                            android:textSize="14sp"
+                            android:minHeight="100dp"
+                            android:hint="请输入办理结果"
+                            android:textColorHint="@color/color_999999"
+                            android:includeFontPadding="false"
+                            android:id="@+id/content"
+                            android:gravity="top|left"
+                            android:background="@null"
+                            android:textColor="@color/color_333333"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content">
+                        </EditText>
+
+                        <TextView
+                            android:textColor="@color/color_999999"
+                            android:textSize="10sp"
+                            android:text="0/200"
+                            app:layout_constraintTop_toBottomOf="@+id/content"
+                            app:layout_constraintRight_toRightOf="parent"
+                            android:id="@+id/count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                        </TextView>
+
+                        <View
+                            android:layout_marginTop="8dp"
+                            android:background="@color/color_e7e9f0"
+                            app:layout_constraintTop_toBottomOf="@+id/count"
+                            android:layout_width="0dp"
+                            android:layout_height="1dp">
+                        </View>
+
+                    </com.ruffian.library.widget.RConstraintLayout>
+
+                    <TextView
+                        android:text="图片视频"
+                        app:layout_constraintTop_toBottomOf="@+id/result_cl"
+                        android:id="@+id/picture_video_txt"
+                        app:layout_constraintLeft_toLeftOf="@+id/result_cl"
+                        android:layout_marginTop="20dp"
+                        android:textColor="@color/color_333333"
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    </TextView>
+
+                    <RelativeLayout
+                        android:id="@+id/picture_video_ll"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginTop="12dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/picture_video_txt">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/picture_video"
+                            android:nestedScrollingEnabled="false"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:text="音频文件"
+                        app:layout_constraintTop_toBottomOf="@+id/picture_video_ll"
+                        android:id="@+id/audio_txt"
+                        app:layout_constraintLeft_toLeftOf="@+id/picture_video_txt"
+                        android:layout_marginTop="20dp"
+                        android:textColor="@color/color_333333"
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    </TextView>
+
+                    <com.ruffian.library.widget.RTextView
+                        android:visibility="gone"
+                        android:gravity="center"
+                        android:textSize="13sp"
+                        android:textColor="@color/white"
+                        android:text="上传"
+                        app:background_normal="@color/color_59abff"
+                        app:corner_radius="3dp"
+                        android:paddingHorizontal="18dp"
+                        android:paddingVertical="9dp"
+                        android:includeFontPadding="false"
+                        android:layout_marginTop="12dp"
+                        app:layout_constraintLeft_toLeftOf="@+id/audio_txt"
+                        app:layout_constraintTop_toBottomOf="@+id/audio_txt"
+                        android:id="@+id/audio_upload"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    </com.ruffian.library.widget.RTextView>
+
+                    <com.ruffian.library.widget.RTextView
+                        android:gravity="center"
+                        android:textSize="13sp"
+                        android:textColor="@color/white"
+                        android:text="录制"
+                        app:background_normal="@color/color_59abff"
+                        app:corner_radius="3dp"
+                        android:paddingHorizontal="18dp"
+                        android:paddingVertical="9dp"
+                        android:includeFontPadding="false"
+                        android:layout_marginTop="12dp"
+                        app:layout_constraintLeft_toLeftOf="@+id/audio_txt"
+                        app:layout_constraintTop_toBottomOf="@+id/audio_txt"
+                        android:id="@+id/audio_record"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    </com.ruffian.library.widget.RTextView>
+
+                    <androidx.recyclerview.widget.RecyclerView
+
+                        android:scrollbars="none"
+                        android:overScrollMode="never"
+                        app:itemAnimator="@{null}"
+                        tools:itemCount="1"
+                        tools:listitem="@layout/recycleview_alarm_handle_audio_item"
+                        android:id="@+id/audio"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginHorizontal="11dp"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/audio_record"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent">
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:lineSpacingMultiplier = "1.5"
+                    android:text="温馨提示：支持上传图片、视频、音频，图片视频最多上传5个，音频文件最多上传5个"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:padding="20dp"
+                    app:layout_constraintTop_toBottomOf="@+id/top_cl"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                </TextView>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <LinearLayout
+            android:id="@+id/process_cl"
+            android:orientation="horizontal"
+            android:showDividers="middle"
+            android:divider="@drawable/middle_dividers_horizontal_1dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="44dp">
+
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/process"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:text="办理"
+                android:background="@color/color_59abff"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+            </TextView>
+
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/finish"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:text="办结"
+                android:background="@color/color_59abff"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+            </TextView>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>
